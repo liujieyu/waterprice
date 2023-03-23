@@ -1,0 +1,88 @@
+{
+	"features": [
+		{
+			"attributes": {
+				"ID": "94",
+				"LGTD": "75.007875",
+				"LTTD": "39.785578",
+				"STCD": "6530240002",
+				"STNM": "坝上雨量水位站",
+				"STTP": "ZZ"
+			},
+			"geometry": {
+				"x": "75.007875",
+				"y": "39.785578"
+			},
+			"rowinfo": {
+				"CV": "0.000",
+				"ID": "94",
+				"LGTD": "75.007875",
+				"LTTD": "39.785578",
+				"RWPTN": "0",
+				"RZ": "2517.930",
+				"STCD": "6530240002",
+				"STNM": "坝上雨量水位站",
+				"STTP": "ZZ",
+				"YUJING_FWL": "2518.200",
+				"YUJING_FWL79": "2519.200",
+				"_status": "1",
+				"jxx": "-0.270",
+				"singular": null,
+				"tm": "2021-11-01 16:01"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		}
+	],
+	"displayFieldName": "",
+	"spatialReference": {
+		"wkid": 4326
+	},
+	"fields": [
+		{
+			"alias": "ID",
+			"length": null,
+			"name": "ID",
+			"type": "esriFieldTypeOID"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STCD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STNM",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STTP",
+			"length": 100,
+			"name": "STTP",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LGTD",
+			"length": 100,
+			"name": "LGTD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LTTD",
+			"length": 100,
+			"name": "LTTD",
+			"type": "esriFieldTypeString"
+		}
+	],
+	"fieldAliases": {
+		"ID": "ID",
+		"LGTD": "LGTD",
+		"LTTD": "LTTD",
+		"STCD": "STCD",
+		"STNM": "STNM",
+		"STTP": "STTP"
+	},
+	"geometryType": "esriGeometryPoint"
+}

@@ -1,0 +1,334 @@
+{
+	"features": [
+		{
+			"attributes": {
+				"ID": "108",
+				"LGTD": "75.011070",
+				"LTTD": "39.783548",
+				"STCD": "6530240016",
+				"STNM": "灌溉洞出水口",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011070",
+				"y": "39.783548"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "108",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.011070",
+				"LTTD": "39.783548",
+				"PUID": "1000001$1$0$0",
+				"STCD": "6530240016",
+				"STLC": "灌溉洞出水口消力池旁",
+				"STNM": "灌溉洞出水口",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000001$1$0$0",
+				"_status": "1"				
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "107",
+				"LGTD": "75.010381",
+				"LTTD": "39.785110",
+				"STCD": "6530240015",
+				"STNM": "导流洞隧洞闸门",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.010381",
+				"y": "39.785110"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "107",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.010381",
+				"LTTD": "39.785110",
+				"PUID": "1000009$1$0$0",
+				"STCD": "6530240015",
+				"STLC": "导流洞隧洞闸控房靠下游",
+				"STNM": "导流洞隧洞闸门",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000009$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "105",
+				"LGTD": "75.007575",
+				"LTTD": "39.785507",
+				"STCD": "6530240013",
+				"STNM": "坝后",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.007575",
+				"y": "39.785507"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "105",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.007575",
+				"LTTD": "39.785507",
+				"PUID": "1000002$1$0$0",
+				"STCD": "6530240013",
+				"STLC": "坝后左侧平坝底排水沟",
+				"STNM": "坝后",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000002$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "106",
+				"LGTD": "75.007427",
+				"LTTD": "39.784571",
+				"STCD": "6530240014",
+				"STNM": "溢洪道出口",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.007427",
+				"y": "39.784571"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "106",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.007427",
+				"LTTD": "39.784571",
+				"PUID": "1000003$1$0$0",
+				"STCD": "6530240014",
+				"STLC": "溢洪道出口围栏",
+				"STNM": "溢洪道出口",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000003$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "103",
+				"LGTD": "75.009459",
+				"LTTD": "39.785600",
+				"STCD": "6530240011",
+				"STNM": "坝前水位尺",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.009459",
+				"y": "39.785600"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "103",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.009459",
+				"LTTD": "39.785600",
+				"PUID": "1000004$1$0$0",
+				"STCD": "6530240011",
+				"STLC": "大坝踏步靠坝顶右侧",
+				"STNM": "坝前水位尺",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000004$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "104",
+				"LGTD": "75.007744",
+				"LTTD": "39.787270",
+				"STCD": "6530240012",
+				"STNM": "溢洪道闸门",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.007744",
+				"y": "39.787270"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "104",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.007744",
+				"LTTD": "39.787270",
+				"PUID": "1000008$1$0$0",
+				"STCD": "6530240012",
+				"STLC": "溢洪道闸室后侧",
+				"STNM": "溢洪道闸门",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000008$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "102",
+				"LGTD": "75.011359",
+				"LTTD": "39.786865",
+				"STCD": "6530240010",
+				"STNM": "灌溉洞闸门",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011359",
+				"y": "39.786865"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "102",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.011359",
+				"LTTD": "39.786865",
+				"PUID": "1000005$1$0$0",
+				"STCD": "6530240010",
+				"STLC": "灌溉洞闸控房内",
+				"STNM": "灌溉洞闸门",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000005$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "101",
+				"LGTD": "75.011520",
+				"LTTD": "39.787477",
+				"STCD": "6530240009",
+				"STNM": "坝前",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011520",
+				"y": "39.787477"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "101",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.011520",
+				"LTTD": "39.787477",
+				"PUID": "1000006$1$0$0",
+				"STCD": "6530240009",
+				"STLC": "导流洞检修闸左侧靠坝体",
+				"STNM": "坝前",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000006$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "100",
+				"LGTD": "75.011600",
+				"LTTD": "39.787547",
+				"STCD": "6530240008",
+				"STNM": "上游来水",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011600",
+				"y": "39.787547"
+			},
+			"rowinfo": {
+				"CSTYPE": 1,
+				"ID": "100",
+				"IDX": null,
+				"IPPort": null,
+				"LGTD": "75.011600",
+				"LTTD": "39.787547",
+				"PUID": "1000007$1$0$0",
+				"STCD": "6530240008",
+				"STLC": "导流洞检修闸右侧靠山体",
+				"STNM": "上游来水",
+				"STTP": "TV",
+				"WWWPath": "/static/demo-guanqu-lcs/webdemo/index.html?1000007$1$0$0",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		}
+	],
+	"displayFieldName": "",
+	"spatialReference": {
+		"wkid": 4326
+	},
+	"fields": [
+		{
+			"alias": "ID",
+			"length": null,
+			"name": "ID",
+			"type": "esriFieldTypeOID"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STCD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STNM",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STTP",
+			"length": 100,
+			"name": "STTP",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LGTD",
+			"length": 100,
+			"name": "LGTD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LTTD",
+			"length": 100,
+			"name": "LTTD",
+			"type": "esriFieldTypeString"
+		}
+	],
+	"fieldAliases": {
+		"ID": "ID",
+		"LGTD": "LGTD",
+		"LTTD": "LTTD",
+		"STCD": "STCD",
+		"STNM": "STNM",
+		"STTP": "STTP"
+	},
+	"geometryType": "esriGeometryPoint"
+}

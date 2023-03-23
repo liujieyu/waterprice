@@ -1,0 +1,85 @@
+{
+	"FeatureLayers": [
+		{
+			"icon": "gisimage/1.png",
+			"icon_warning": "gisimage/1-alert.png",
+			"itype": "yuqing",
+			"show": "1",
+			"title": "雨情",
+			"url": "js/gisjson/yuqing.json"
+		},
+		{
+			"icon": "gisimage/2.png",
+			"icon_warning": "gisimage/2-alert.png",
+			"itype": "shuikushuiqing",
+			"show": "1",
+			"title": "水库水情",
+			"url": "js/gisjson/shuikushuiqing.json"
+		},
+		{
+			"icon": "gisimage/3.png",
+			"icon_warning": "gisimage/3-alert.png",
+			"itype": "hedaoshuiqing",
+			"show": "1",
+			"title": "河道水情",
+			"url": "js/gisjson/hedaoshuiqing.json"
+		},
+		{
+			"icon": "gisimage/4.png",
+			"icon_warning": "gisimage/4-alert.png",
+			"itype": "qudaoshuiqing",
+			"show": "1",
+			"title": "渠道水情",
+			"url": "js/gisjson/qudaoshuiqing.json"
+		},
+		{
+			"icon": "gisimage/5.png",
+			"icon_warning": "gisimage/5-alert.png",
+			"itype": "zhafashuiqing",
+			"show": "0",
+			"title": "闸阀水情",
+			"url": "js/gisjson/zhafashuiqing.json"
+		},
+		{
+			"icon": "gisimage/6.png",
+			"icon_warning": "gisimage/6-alert.png",
+			"itype": "zhafazhuangtai",
+			"show": "0",
+			"title": "闸阀状态",
+			"url": "js/gisjson/zhafazhuangtai.json"
+		},
+		{
+			"icon": "gisimage/7.png",
+			"icon_warning": "gisimage/7-alert.png",
+			"itype": "tuxiang",
+			"show": "0",
+			"title": "图像",
+			"url": "js/gisjson/tuxiang.json"
+		},
+		{
+			"icon": "gisimage/8.png",
+			"icon_warning": "gisimage/8-alert.png",
+			"itype": "shipin",
+			"show": "1",
+			"title": "视频",
+			"url": "js/gisjson/shipin.json"
+		},
+		{
+			"icon": "gisimage/9.png",
+			"icon_warning": "gisimage/9-alert.png",
+			"itype": "yunxinggongkuang",
+			"show": "0",
+			"title": "运行工况",
+			"url": "js/gisjson/gongkuang.json"
+		}
+	],
+	"BaseInfo": {
+		"title": "智慧量测水系统"
+	},
+	"GIS_CENTER": {
+		"xmax": "75.05850665480702",
+		"xmin": "74.85850665480702",
+		"ymax": "39.96291316840507",
+		"ymin": "39.76291316840507"
+	}
+}

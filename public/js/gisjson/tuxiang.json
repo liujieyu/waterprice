@@ -1,0 +1,54 @@
+{
+	"features": [],
+	"displayFieldName": "",
+	"spatialReference": {
+		"wkid": 4326
+	},
+	"fields": [
+		{
+			"alias": "ID",
+			"length": null,
+			"name": "ID",
+			"type": "esriFieldTypeOID"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STCD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STNM",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STTP",
+			"length": 100,
+			"name": "STTP",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LGTD",
+			"length": 100,
+			"name": "LGTD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LTTD",
+			"length": 100,
+			"name": "LTTD",
+			"type": "esriFieldTypeString"
+		}
+	],
+	"fieldAliases": {
+		"ID": "ID",
+		"LGTD": "LGTD",
+		"LTTD": "LTTD",
+		"STCD": "STCD",
+		"STNM": "STNM",
+		"STTP": "STTP"
+	},
+	"geometryType": "esriGeometryPoint"
+}

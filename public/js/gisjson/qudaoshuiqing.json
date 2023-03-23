@@ -1,0 +1,247 @@
+{
+	"features": [
+		{
+			"attributes": {
+				"ID": "112",
+				"LGTD": null,
+				"LTTD": null,
+				"STCD": "6530240019",
+				"STNM": "溢洪洞出库流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": null,
+				"y": null
+			},
+			"rowinfo": {
+				"ALARM": "3",
+				"ID": "112",
+				"LGTD": null,
+				"LTTD": null,
+				"Q": "0.037",
+				"STCD": "6530240019",
+				"STNM": "溢洪洞出库流量站",
+				"STTP": "ZQ",
+				"TM": "21-11-01 16:01:25",
+				"WPTN": "4",
+				"YUJING_Q": null,
+				"YUJING_Z": null,
+				"Z": "0.010",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "97",
+				"LGTD": "75.010841",
+				"LTTD": "39.783379",
+				"STCD": "6530240005",
+				"STNM": "生态用水流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.010841",
+				"y": "39.783379"
+			},
+			"rowinfo": {
+				"ALARM": "3",
+				"ID": "97",
+				"LGTD": "75.010841",
+				"LTTD": "39.783379",
+				"Q": "0.013",
+				"STCD": "6530240005",
+				"STNM": "生态用水流量站",
+				"STTP": "ZQ",
+				"TM": "21-11-01 16:01:15",
+				"WPTN": "6",
+				"YUJING_Q": "2.000",
+				"YUJING_Z": "2515.000",
+				"Z": "0.580",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "113",
+				"LGTD": null,
+				"LTTD": null,
+				"STCD": "6530240020",
+				"STNM": "导流洞出库流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": null,
+				"y": null
+			},
+			"rowinfo": {
+				"ALARM": "3",
+				"ID": "113",
+				"LGTD": null,
+				"LTTD": null,
+				"Q": "0.000",
+				"STCD": "6530240020",
+				"STNM": "导流洞出库流量站",
+				"STTP": "ZQ",
+				"TM": "21-11-01 15:41:26",
+				"WPTN": "6",
+				"YUJING_Q": null,
+				"YUJING_Z": null,
+				"Z": "0.030",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "96",
+				"LGTD": "75.011000",
+				"LTTD": "39.782900",
+				"STCD": "6530240004",
+				"STNM": "灌溉用水流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.011000",
+				"y": "39.782900"
+			},
+			"rowinfo": {
+				"ALARM": "3",
+				"ID": "96",
+				"LGTD": "75.011000",
+				"LTTD": "39.782900",
+				"Q": "0.000",
+				"STCD": "6530240004",
+				"STNM": "灌溉用水流量站",
+				"STTP": "ZQ",
+				"TM": "21-07-04 17:21:35",
+				"WPTN": "4",
+				"YUJING_Q": "2.000",
+				"YUJING_Z": "2515.000",
+				"Z": "0.000",
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "98",
+				"LGTD": "75.011077",
+				"LTTD": "39.783448",
+				"STCD": "6530240006",
+				"STNM": "工业用水流量站A",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.011077",
+				"y": "39.783448"
+			},
+			"rowinfo": {
+				"ALARM": "3",
+				"ID": "98",
+				"LGTD": "75.011077",
+				"LTTD": "39.783448",
+				"Q": null,
+				"STCD": "6530240006",
+				"STNM": "工业用水流量站A",
+				"STTP": "ZQ",
+				"TM": null,
+				"WPTN": null,
+				"YUJING_Q": "2.000",
+				"YUJING_Z": "2515.000",
+				"Z": null,
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "99",
+				"LGTD": "75.011087",
+				"LTTD": "39.783464",
+				"STCD": "6530240007",
+				"STNM": "工业用水流量站B",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.011087",
+				"y": "39.783464"
+			},
+			"rowinfo": {
+				"ALARM": "3",
+				"ID": "99",
+				"LGTD": "75.011087",
+				"LTTD": "39.783464",
+				"Q": null,
+				"STCD": "6530240007",
+				"STNM": "工业用水流量站B",
+				"STTP": "ZQ",
+				"TM": null,
+				"WPTN": null,
+				"YUJING_Q": "2.000",
+				"YUJING_Z": "2515.000",
+				"Z": null,
+				"_status": "1"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		}
+	],
+	"displayFieldName": "",
+	"spatialReference": {
+		"wkid": 4326
+	},
+	"fields": [
+		{
+			"alias": "ID",
+			"length": null,
+			"name": "ID",
+			"type": "esriFieldTypeOID"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STCD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STNM",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STTP",
+			"length": 100,
+			"name": "STTP",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LGTD",
+			"length": 100,
+			"name": "LGTD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LTTD",
+			"length": 100,
+			"name": "LTTD",
+			"type": "esriFieldTypeString"
+		}
+	],
+	"fieldAliases": {
+		"ID": "ID",
+		"LGTD": "LGTD",
+		"LTTD": "LTTD",
+		"STCD": "STCD",
+		"STNM": "STNM",
+		"STTP": "STTP"
+	},
+	"geometryType": "esriGeometryPoint"
+}

@@ -1,0 +1,675 @@
+{
+	"features": [
+		{
+			"attributes": {
+				"ID": "105",
+				"LGTD": "75.007575",
+				"LTTD": "39.785507",
+				"STCD": "6530240013",
+				"STNM": "坝后",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.007575",
+				"y": "39.785507"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "105",
+				"LGTD": "75.007575",
+				"LTTD": "39.785507",
+				"STCD": "6530240013",
+				"STLC": "坝后左侧平坝底排水沟",
+				"STNM": "坝后",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "101",
+				"LGTD": "75.011520",
+				"LTTD": "39.787477",
+				"STCD": "6530240009",
+				"STNM": "坝前",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011520",
+				"y": "39.787477"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "101",
+				"LGTD": "75.011520",
+				"LTTD": "39.787477",
+				"STCD": "6530240009",
+				"STLC": "导流洞检修闸左侧靠坝体",
+				"STNM": "坝前",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "103",
+				"LGTD": "75.009459",
+				"LTTD": "39.785600",
+				"STCD": "6530240011",
+				"STNM": "坝前水位尺",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.009459",
+				"y": "39.785600"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "103",
+				"LGTD": "75.009459",
+				"LTTD": "39.785600",
+				"STCD": "6530240011",
+				"STLC": "大坝踏步靠坝顶右侧",
+				"STNM": "坝前水位尺",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "94",
+				"LGTD": "75.007875",
+				"LTTD": "39.785578",
+				"STCD": "6530240002",
+				"STNM": "坝上雨量水位站",
+				"STTP": "ZZ"
+			},
+			"geometry": {
+				"x": "75.007875",
+				"y": "39.785578"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "94",
+				"LGTD": "75.007875",
+				"LTTD": "39.785578",
+				"STCD": "6530240002",
+				"STLC": "导流洞检修闸旁",
+				"STNM": "坝上雨量水位站",
+				"STTP": "ZZ",
+				"VOLMAX": "16.00",
+				"VOLMIN": "12.00",
+				"_status": "1",
+				"tm": "21-11-01 16:01",
+				"vol": "12.32"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "113",
+				"LGTD": null,
+				"LTTD": null,
+				"STCD": "6530240020",
+				"STNM": "导流洞出库流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": null,
+				"y": null
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "113",
+				"LGTD": null,
+				"LTTD": null,
+				"STCD": "6530240020",
+				"STLC": "导流洞出库流量站",
+				"STNM": "导流洞出库流量站",
+				"STTP": "ZQ",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "1",
+				"tm": "21-11-01 15:41",
+				"vol": "12.90"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "110",
+				"LGTD": "75.010244",
+				"LTTD": "39.784963",
+				"STCD": "6530240018",
+				"STNM": "导流洞工作闸",
+				"STTP": "GC"
+			},
+			"geometry": {
+				"x": "75.010244",
+				"y": "39.784963"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "110",
+				"LGTD": "75.010244",
+				"LTTD": "39.784963",
+				"STCD": "6530240018",
+				"STLC": "导流洞隧洞闸控房 ",
+				"STNM": "导流洞工作闸",
+				"STTP": "GC",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "107",
+				"LGTD": "75.010381",
+				"LTTD": "39.785110",
+				"STCD": "6530240015",
+				"STNM": "导流洞隧洞闸门",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.010381",
+				"y": "39.785110"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "107",
+				"LGTD": "75.010381",
+				"LTTD": "39.785110",
+				"STCD": "6530240015",
+				"STLC": "导流洞隧洞闸控房靠下游",
+				"STNM": "导流洞隧洞闸门",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "98",
+				"LGTD": "75.011077",
+				"LTTD": "39.783448",
+				"STCD": "6530240006",
+				"STNM": "工业用水流量站A",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.011077",
+				"y": "39.783448"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "98",
+				"LGTD": "75.011077",
+				"LTTD": "39.783448",
+				"STCD": "6530240006",
+				"STLC": "取水口后生态用水管道旁",
+				"STNM": "工业用水流量站A",
+				"STTP": "ZQ",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "99",
+				"LGTD": "75.011087",
+				"LTTD": "39.783464",
+				"STCD": "6530240007",
+				"STNM": "工业用水流量站B",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.011087",
+				"y": "39.783464"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "99",
+				"LGTD": "75.011087",
+				"LTTD": "39.783464",
+				"STCD": "6530240007",
+				"STLC": "取水口后工业用水管道",
+				"STNM": "工业用水流量站B",
+				"STTP": "ZQ",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "109",
+				"LGTD": "75.011288",
+				"LTTD": "39.786670",
+				"STCD": "6530240017",
+				"STNM": "灌溉洞工作闸",
+				"STTP": "GC"
+			},
+			"geometry": {
+				"x": "75.011288",
+				"y": "39.786670"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "109",
+				"LGTD": "75.011288",
+				"LTTD": "39.786670",
+				"STCD": "6530240017",
+				"STLC": "灌溉洞闸控房靠下游机组",
+				"STNM": "灌溉洞工作闸",
+				"STTP": "GC",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "102",
+				"LGTD": "75.011359",
+				"LTTD": "39.786865",
+				"STCD": "6530240010",
+				"STNM": "灌溉洞闸门",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011359",
+				"y": "39.786865"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "102",
+				"LGTD": "75.011359",
+				"LTTD": "39.786865",
+				"STCD": "6530240010",
+				"STLC": "灌溉洞闸控房内",
+				"STNM": "灌溉洞闸门",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "96",
+				"LGTD": "75.011000",
+				"LTTD": "39.782900",
+				"STCD": "6530240004",
+				"STNM": "灌溉用水流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.011000",
+				"y": "39.782900"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "96",
+				"LGTD": "75.011000",
+				"LTTD": "39.782900",
+				"STCD": "6530240004",
+				"STLC": "取水口后明渠",
+				"STNM": "灌溉用水流量站",
+				"STTP": "ZQ",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "1",
+				"tm": "21-07-04 17:21",
+				"vol": "12.46"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "108",
+				"LGTD": "75.011070",
+				"LTTD": "39.783548",
+				"STCD": "6530240016",
+				"STNM": "灌溉洞出水口",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011070",
+				"y": "39.783548"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "108",
+				"LGTD": "75.011070",
+				"LTTD": "39.783548",
+				"STCD": "6530240016",
+				"STLC": "灌溉洞出水口消力池旁",
+				"STNM": "灌溉洞出水口",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "95",
+				"LGTD": "74.985701",
+				"LTTD": "39.827577",
+				"STCD": "6530240003",
+				"STNM": "入库流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "74.985701",
+				"y": "39.827577"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "95",
+				"LGTD": "74.985701",
+				"LTTD": "39.827577",
+				"STCD": "6530240003",
+				"STLC": "坝上9公里",
+				"STNM": "入库流量站",
+				"STTP": "ZQ",
+				"VOLMAX": "16.00",
+				"VOLMIN": "12.00",
+				"_status": "1",
+				"tm": "21-11-01 16:01",
+				"vol": "14.65"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "100",
+				"LGTD": "75.011600",
+				"LTTD": "39.787547",
+				"STCD": "6530240008",
+				"STNM": "上游来水",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.011600",
+				"y": "39.787547"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "100",
+				"LGTD": "75.011600",
+				"LTTD": "39.787547",
+				"STCD": "6530240008",
+				"STLC": "导流洞检修闸右侧靠山体",
+				"STNM": "上游来水",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "97",
+				"LGTD": "75.010841",
+				"LTTD": "39.783379",
+				"STCD": "6530240005",
+				"STNM": "生态用水流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": "75.010841",
+				"y": "39.783379"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "97",
+				"LGTD": "75.010841",
+				"LTTD": "39.783379",
+				"STCD": "6530240005",
+				"STLC": "取水口后生态用水管道",
+				"STNM": "生态用水流量站",
+				"STTP": "ZQ",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "1",
+				"tm": "21-11-01 16:01",
+				"vol": "12.69"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "106",
+				"LGTD": "75.007427",
+				"LTTD": "39.784571",
+				"STCD": "6530240014",
+				"STNM": "溢洪道出口",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.007427",
+				"y": "39.784571"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "106",
+				"LGTD": "75.007427",
+				"LTTD": "39.784571",
+				"STCD": "6530240014",
+				"STLC": "溢洪道出口围栏",
+				"STNM": "溢洪道出口",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "104",
+				"LGTD": "75.007744",
+				"LTTD": "39.787270",
+				"STCD": "6530240012",
+				"STNM": "溢洪道闸门",
+				"STTP": "TV"
+			},
+			"geometry": {
+				"x": "75.007744",
+				"y": "39.787270"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "104",
+				"LGTD": "75.007744",
+				"LTTD": "39.787270",
+				"STCD": "6530240012",
+				"STLC": "溢洪道闸室后侧",
+				"STNM": "溢洪道闸门",
+				"STTP": "TV",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "0",
+				"tm": null,
+				"vol": "0.00"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "112",
+				"LGTD": null,
+				"LTTD": null,
+				"STCD": "6530240019",
+				"STNM": "溢洪洞出库流量站",
+				"STTP": "ZQ"
+			},
+			"geometry": {
+				"x": null,
+				"y": null
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "112",
+				"LGTD": null,
+				"LTTD": null,
+				"STCD": "6530240019",
+				"STLC": "溢洪洞出库流量站",
+				"STNM": "溢洪洞出库流量站",
+				"STTP": "ZQ",
+				"VOLMAX": "220.00",
+				"VOLMIN": "12.00",
+				"_status": "1",
+				"tm": "21-11-01 16:01",
+				"vol": "12.82"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		},
+		{
+			"attributes": {
+				"ID": "93",
+				"LGTD": "74.939611",
+				"LTTD": "39.865697",
+				"STCD": "6530240001",
+				"STNM": "预警雨量站",
+				"STTP": "PP"
+			},
+			"geometry": {
+				"x": "74.939611",
+				"y": "39.865697"
+			},
+			"rowinfo": {
+				"CS": "正常",
+				"ID": "93",
+				"LGTD": "74.939611",
+				"LTTD": "39.865697",
+				"STCD": "6530240001",
+				"STLC": "坝上20.5公里",
+				"STNM": "预警雨量站",
+				"STTP": "PP",
+				"VOLMAX": "16.00",
+				"VOLMIN": "12.00",
+				"_status": "1",
+				"tm": "21-11-01 16:00",
+				"vol": "14.68"
+			},
+			"stGatageR": null,
+			"zhaFaZhuangTaiGIS8": null
+		}
+	],
+	"displayFieldName": "",
+	"spatialReference": {
+		"wkid": 4326
+	},
+	"fields": [
+		{
+			"alias": "ID",
+			"length": null,
+			"name": "ID",
+			"type": "esriFieldTypeOID"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STCD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STCD",
+			"length": 100,
+			"name": "STNM",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "STTP",
+			"length": 100,
+			"name": "STTP",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LGTD",
+			"length": 100,
+			"name": "LGTD",
+			"type": "esriFieldTypeString"
+		},
+		{
+			"alias": "LTTD",
+			"length": 100,
+			"name": "LTTD",
+			"type": "esriFieldTypeString"
+		}
+	],
+	"fieldAliases": {
+		"ID": "ID",
+		"LGTD": "LGTD",
+		"LTTD": "LTTD",
+		"STCD": "STCD",
+		"STNM": "STNM",
+		"STTP": "STTP"
+	},
+	"geometryType": "esriGeometryPoint"
+}
