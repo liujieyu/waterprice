@@ -22,24 +22,23 @@
                       <MenuItem name="1-5" to="/water-usageinfo">水费使用统计</MenuItem>
               </Submenu>
               <Submenu name="2">
+                      <template slot="title">
+                        <Icon type="ios-paper" />
+                        支渠水量分析
+                      </template>
+                      <MenuItem name="2-1" to="/water-realanalysis">实时水情监控</MenuItem>
+                      <MenuItem name="2-2" to="/plan-manage">小时水量分析</MenuItem>
+                      <MenuItem name="2-3" to="/duty-addrlist">日水量分析</MenuItem>
+                      <MenuItem name="2-4" to="/duty-infomanage">月水量分析</MenuItem>
+                  </Submenu>
+              <Submenu name="3">
                   <template slot="title">
                       <Icon type="ios-filing" />
                       信息维护
                   </template>
-                  <MenuItem name="2-1" to="/stepprice-manage">阶梯水价维护</MenuItem>
-                  <MenuItem name="2-2" to="/userinfo-manage">用户信息维护</MenuItem>
-              </Submenu>
-                  <Submenu name="3">
-                      <template slot="title">
-                        <Icon type="ios-paper" />
-                        值班管理
-                      </template>
-                      <MenuItem name="3-1" to="/warm-dutyplan">值班安排</MenuItem>
-                      <MenuItem name="3-2" to="/plan-manage">值班安排维护</MenuItem>
-                      <MenuItem name="3-3" to="/duty-addrlist">值班通讯录</MenuItem>
-                      <MenuItem name="3-4" to="/duty-infomanage">值班通讯录维护</MenuItem>
-                      <MenuItem name="3-5" to="/warm-export">水雨情报表导出</MenuItem>
-                  </Submenu>
+                  <MenuItem name="3-1" to="/stepprice-manage">阶梯水价维护</MenuItem>
+                  <MenuItem name="3-2" to="/userinfo-manage">用户信息维护</MenuItem>
+              </Submenu>                 
               <Submenu name="4">
                   <template slot="title">
                       <Icon type="ios-cog" />

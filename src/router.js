@@ -23,6 +23,8 @@ export default new Router({
     { path: '/water-realinfo',component: () => import('./table/realwater/list.vue') },
     //水费使用信息
     { path: '/water-usageinfo',component: () => import('./table/waterusage/list.vue') },
+    //实时水情监控
+    { path: '/water-realanalysis',component: () => import('./table/channelwater/realwater/list.vue') },
   ],},    
   ] 
 })

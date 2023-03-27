@@ -37,5 +37,7 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+import FilterMethods from '@/assets/commonJS/FilterMethods.js'
+Vue.prototype.$FilterData = FilterMethods.methods;
 //设置后台项目名称
 Vue.prototype.$WarmTable='table_war_exploded';
