@@ -5,14 +5,24 @@
             <COL span="11">
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
                 <COL>
+                  <el-date-picker
+                    v-model="form.hourcon"
+                    @change="search"
+                    size="mini"
+                    type="datetime"
+                    placeholder="选择时间"
+                    format="yyyy-MM-dd HH"
+                  >                   
+                  </el-date-picker>
+                </COL>
+                <COL>
                  <Input search enter-button suffix="ios-search" placeholder="请输入站点名称" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
             </Row>
             <Row class="fgline"></Row>
             <el-table
-                 class="ananlysis"
                 :data="data"
-                ref="realtable"
+                ref="hourtable"
                 border
                 highlight-current-row
                 @current-change="handleCurrentChange"
@@ -32,12 +42,6 @@
                 :sortable="item.sortable"
                 :show-overflow-tooltip="true"
                 ></el-table-column>
-                <!-- 自定义 -->
-                <el-table-column align="center" label="水势" :width="80">
-                <template slot-scope="scope">
-                    <strong>{{ scope.row.wptn==4?'↓':scope.row.wptn==5?'↑':'一'}}</strong>
-                </template>
-                </el-table-column>
             </el-table>
             </COL>
             <COL span="2" style="padding-left:5px;">
@@ -46,7 +50,7 @@
             <COL span="11" style="padding-left:14px;">
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;font-size:16px;padding-bottom:12px;font-weight:bold;">
                 <Icon type="md-analytics" size="20"/>
-                &nbsp;&nbsp;&nbsp;&nbsp;{{currentRow.stnm}}监测分析
+                &nbsp;&nbsp;&nbsp;&nbsp;{{currentRow.stnm}}小时水量分析
             </Row>
               <Row type="flex" :gutter="16" class="rowtocol"> 
                 <COL>
@@ -59,6 +63,7 @@
                       unlink-panels
                       type="datetimerange"
                       size="mini"
+                      format="yyyy-MM-dd HH"
                       style="min-width: 360px;margin-bottom:12px;"
                     ></el-date-picker>
                 </COL>
@@ -66,7 +71,7 @@
              <!-- 选项卡 -->
             <Tabs type="card">
               <!-- 水情图 -->
-              <TabPane label="水情图">
+              <TabPane label="小时水量图">
               <div id="achart" 
               v-show="table.Rows_filter.length > 0"
               :style="{'width': chartwith+'px','height':(table.height+40)+'px'}"></div>
@@ -82,7 +87,7 @@
                     :columns="table.tablecolumns"
                     :data="table.Rows_filter"
                     :loading="table.loading"
-                    width="565"
+                    width="580"
                     border
                     size="small"
                     :height="table.height"
@@ -120,7 +125,7 @@ export default {
                 loading:false,
                 theight:window.innerHeight-190,
                 chartwith:(window.innerWidth-200-36)*0.53,
-                currentRow:{stcd:'',stnm:'',z:0,q:0},
+                currentRow:{stcd:'',stnm:'',z:0,q:0},               
                 // 表头设置
             tablecolumns: [
               {
@@ -135,26 +140,32 @@ export default {
                 key: "stnm",
                 width: 130,
                 align: "center",
-                fixed: "left"
+                fixed: "left",
               },
               {
                 title: "时间",
-                key: "tm",
-                width: 140,
+                key: "dt",
+                width: 120,
                 align: "center",
               },   
               {
-                title: "水深(m)",
-                key: "z",
-                width: 90,
+                title: "平均水深(m)",
+                key: "az",
+                width: 110,
                 align: "center",
               },
               {
-                title: "流量(m³/s)",
-                width: 90,
-                key: "q",
+                title: "平均流量(m³/s)",
+                width: 120,
+                key: "aq",
                 align: "center",
-              },                   
+              },  
+              {
+                title: "小时水量(m³)",
+                width: 110,
+                key: "wq",
+                align: "center",
+              },                 
             ],                
             data:[],           
             table:{
@@ -169,27 +180,27 @@ export default {
                 },
                 {
                     title: "时间",
-                    key: "tm",
-                    width: 150,
+                    key: "dt",
+                    width: 130,
                     align: "center",
                     sortable: "custom"
                 },
                 {
-                    title: "水深(m)",
-                    width: 110,
-                    key: "z",
+                    title: "平均水深(m)",
+                    width: 120,
+                    key: "az",
                     align: "center",
                 },
                 {                   
-                    title: "流量(m³/s)",
-                    width: 110,
-                    key: "q",
+                    title: "平均流量(m³/s)",
+                    width: 125,
+                    key: "aq",
                     align: "center",
                 },
                 {                   
-                    title: "水势",
-                    width: 110,
-                    key: "wptn",
+                    title: "小时水量(m³)",
+                    width: 120,
+                    key: "wq",
                     align: "center",
                 }
                 ],
@@ -206,8 +217,9 @@ export default {
                 Z:[],
             },
             form:{
+                hourcon:'',
                 searchmsg:'', 
-                orderBy:'tm',
+                orderBy:'dt',
                 sequence:'desc',
                 showsign:'',              
             },   
@@ -225,6 +237,7 @@ export default {
           var timeSlot = [start, end];
 
           this.table.date=timeSlot;
+          this.form.hourcon=end;
 
           function zeroPointOfTheDay() {
             var date = new Date();
@@ -238,20 +251,38 @@ export default {
         },
         methods:{
             search(){
+              
+              var end=new Date(this.form.hourcon.getTime());
+              var start=new Date(this.form.hourcon.getTime());
+              start.setHours(0);
+              start.setMinutes(0);
+              start.setSeconds(0);
+              var timeSlot=[start, end];
+              this.table.date=timeSlot;
               this.Reload(true);
             },
             Reload(sign){
+                var datetime=this.$FilterData.elDatePicker_Filter(this.form.hourcon);
+                var dt=datetime.substring(0,10);
+                var tm=parseInt(datetime.split(" ")[1].substring(0,2));
                 this.loading=true;
-                this.axios.get('/'+this.$WarmTable+'/waterprice/realcanalwater',{params:{stnm:this.form.searchmsg,showsign:this.form.showsign}}).then((res)=>{
+                this.axios.get('/'+this.$WarmTable+'/waterprice/hourcanalwater',{params:{dt:dt,tm:tm,stnm:this.form.searchmsg,showsign:this.form.showsign}}).then((res)=>{
                     this.loading = false;
                     this.data = res.data;
                     for(var i=0;i<this.data.length;i++){
                       var row=this.data[i];
-                      row.z=row.z.toFixed(2);
-                      row.q=row.q.toFixed(3);
+                      if(row.az!=null){
+                        row.az=row.az.toFixed(2);
+                      }
+                      if(row.aq!=null){
+                        row.aq=row.aq.toFixed(3);
+                      }
+                      if(row.wq!=null){
+                        row.wq=row.wq.toFixed(3);
+                      }
                     }
                     if(sign){
-                      this.$refs.realtable.setCurrentRow(this.data[0]);
+                      this.$refs.hourtable.setCurrentRow(this.data[0]);
                     }
                 });
             },
@@ -262,12 +293,12 @@ export default {
                 var _bgincount=(_currentPage - 1) * _pageSizes+1;
                 var _endcount=_currentPage * _pageSizes;
                 var timecon=this.$FilterData.elDatePicker_Filter(this.table.date).split(',');
-                this.axios.get('/'+this.$WarmTable+'/waterprice/hiscanalwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
+                this.axios.get('/'+this.$WarmTable+'/waterprice/hishourwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
                     this.table.loading = false;
                     this.table.Rows_filter = res.data.rows;
                     this.table.total = res.data.total;
                 });
-                this.axios.get('/'+this.$WarmTable+'/waterprice/hiswaterchart',{params:{begintime:timecon[1],endtime:timecon[2],stcd:this.currentRow.stcd}}).then((res)=>{
+                this.axios.get('/'+this.$WarmTable+'/waterprice/hishourchart',{params:{begintime:timecon[1],endtime:timecon[2],stcd:this.currentRow.stcd}}).then((res)=>{
                     this.table.loading = false;
                     var chartdata = res.data;
                     this.createChart(chartdata);
@@ -281,7 +312,7 @@ export default {
                 var _bgincount=(_currentPage - 1) * _pageSizes+1;
                 var _endcount=_currentPage * _pageSizes;
                 var timecon=this.$FilterData.elDatePicker_Filter(this.table.date).split(',');
-                this.axios.get('/'+this.$WarmTable+'/waterprice/hiscanalwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
+                this.axios.get('/'+this.$WarmTable+'/waterprice/hishourwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
                     this.table.loading = false;
                     this.table.Rows_filter = res.data.rows;
                     this.table.total = res.data.total;
@@ -314,10 +345,10 @@ export default {
               var now=new Date();
               var nowday=this.$FilterData.getNowDayString(now);
               if (chartdata.length > 0) {
-                var echartData = this.$FilterData.transform_QDSQ_data_into_ehart_data(chartdata,"historyTable");
+                var echartData = this.$FilterData.transform_QDSQ_data_into_ehart_data(chartdata,"hourTable");
                 var mintime=echartData.x.list[0].slice(0, 10),maxtime=echartData.x.list[echartData.x.list.length-1].slice(0, 10);               
                 if(mintime==nowday && maxtime==nowday){
-                  echartData.chartName = "今日水情曲线图";
+                  echartData.chartName = "今日小时水量图";
                   for(var i=0;i<echartData.x.list.length;i++){
                     var time=echartData.x.list[i].split(" ");
                     echartData.x.list[i]=time[1];
@@ -338,7 +369,7 @@ export default {
                     trigger: "axis"
                   },
                   legend: {
-                    data: [echartData.y1.name, echartData.y2.name],
+                    data: [echartData.y1.name, echartData.y3.name,echartData.y2.name],
                     y: "bottom"
                   },
                   toolbox: {
@@ -347,9 +378,17 @@ export default {
                       mark: { show: true },
                       magicType: { show: true, type: ["line", "bar"] },
                       restore: { show: true },
-                      saveAsImage: { show: true },
+                      saveAsImage: { show: true }
                     },
+                    right:'7%'
                   },
+                   grid: {
+                        left: 1,
+                        right: '10%',
+                        height:'83%',
+                        //bottom:20,
+                        containLabel: true
+                    },
                   calculable: true,
                   animation: true,
                   xAxis: [
@@ -363,6 +402,18 @@ export default {
                     {
                       name: `${echartData.y1.name} m³/s`,
                       type: "value",
+                      position: 'left',
+                      axisLabel: {
+                        formatter: "{value} "
+                      },
+                      //scale: true,
+                      // max: echartData.y1.max,
+                      // min: echartData.y1.min
+                    },
+                    {
+                      name: `${echartData.y3.name} m³`,
+                      type: "value",
+                      position: 'right',		              
                       axisLabel: {
                         formatter: "{value} "
                       },
@@ -373,6 +424,8 @@ export default {
                     {
                       name: `${echartData.y2.name}m`,
                       type: "value",
+                      position: 'right',
+                      offset: 47, // y轴位置的偏移量
                       axisLabel: {
                         formatter: "{value} "
                       },
@@ -394,11 +447,24 @@ export default {
                           }  
                       },
                     },
+                     {
+                      name: echartData.y3.name,
+                      type: "bar",
+                      data: echartData.y3.list,
+                       yAxisIndex: 1,
+                      showSymbol: false,
+                      smooth: true,
+                      itemStyle : {  
+                          normal : {  
+                              color:'#83E1EA'  
+                          }  
+                      },
+                    },
                     {
                       name: echartData.y2.name,
                       type: "line",
                       data: echartData.y2.list,
-                      yAxisIndex: 1,
+                      yAxisIndex: 2,
                       showSymbol: false,
                       smooth: true,
                       itemStyle : {  
@@ -414,9 +480,9 @@ export default {
                 var begintime=time[1].slice(0,10);
                 var endtime=time[2].slice(0,10);
                 if(begintime==nowday && endtime==nowday){
-                  document.getElementById("nochart").innerHTML = "暂无今天水情数据";
+                  document.getElementById("nochart").innerHTML = "暂无今天小时水量数据";
                 }else{
-                  document.getElementById("nochart").innerHTML = "暂无水情数据";
+                  document.getElementById("nochart").innerHTML = "暂无小时水量数据";
                 }
               }
             },

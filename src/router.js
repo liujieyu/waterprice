@@ -25,6 +25,8 @@ export default new Router({
     { path: '/water-usageinfo',component: () => import('./table/waterusage/list.vue') },
     //实时水情监控
     { path: '/water-realanalysis',component: () => import('./table/channelwater/realwater/list.vue') },
+    //小时水量监测
+    { path: '/water-houranalysis',component: () => import('./table/channelwater/hourwater/list.vue') },
   ],},    
   ] 
 })

@@ -2,14 +2,14 @@
 	<div style="overflow:hidden;">
 		<Breadcrumb :style="{margin: '10px'}">
             <BreadcrumbItem>支渠水量分析</BreadcrumbItem>
-            <BreadcrumbItem>实时水情监测</BreadcrumbItem>
+            <BreadcrumbItem>小时水量监测</BreadcrumbItem>
         </Breadcrumb>
-		<REALWATER></REALWATER>
+		<HOURWATER></HOURWATER>
 	</div>
 </template>
 
 <script type="text/javascript">
-  import REALWATER from '@/table/channelwater/realwater/show.vue';
+  import HOURWATER from '@/table/channelwater/hourwater/show.vue';
 	export default {
         data() {
         return { };
@@ -19,7 +19,7 @@
       methods: { },
       computed: { },
       components: { 
-      REALWATER,       
+      HOURWATER,       
       }
     }
 </script>
