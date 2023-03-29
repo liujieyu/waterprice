@@ -56,6 +56,7 @@
                       start-placeholder="开始时间"
                       end-placeholder="结束时间"
                       @change="handleDatePickerChange"
+                      :picker-options="table.datePickerOptions"
                       unlink-panels
                       type="datetimerange"
                       size="mini"
@@ -119,7 +120,7 @@ export default {
             return{
                 loading:false,
                 theight:window.innerHeight-190,
-                chartwith:(window.innerWidth-200-36)*0.53,
+                chartwith:window.innerWidth<1426?580:(window.innerWidth-200-36-630),
                 currentRow:{stcd:'',stnm:'',z:0,q:0},
                 // 表头设置
             tablecolumns: [
@@ -193,6 +194,55 @@ export default {
                     align: "center",
                 }
                 ],
+                datePickerOptions:{
+                  shortcuts: [
+                  {
+                    text: "最近6小时",
+                    onClick(picker) {
+                      const end = new Date();
+                      const start = new Date();
+                      start.setTime(start.getTime() - 3600 * 1000 * 6);
+                      picker.$emit("pick", [start, end]);
+                    }
+                  },
+                  {
+                    text: "最近12小时",
+                    onClick(picker) {
+                      const end = new Date();
+                      const start = new Date();
+                      start.setTime(start.getTime() - 3600 * 1000 * 12);
+                      picker.$emit("pick", [start, end]);
+                    }
+                  },
+                  {
+                    text: "最近24小时",
+                    onClick(picker) {
+                      const end = new Date();
+                      const start = new Date();
+                      start.setTime(start.getTime() - 3600 * 1000 * 24);
+                      picker.$emit("pick", [start, end]);
+                    }
+                  },
+                  {
+                    text: "最近36小时",
+                    onClick(picker) {
+                      const end = new Date();
+                      const start = new Date();
+                      start.setTime(start.getTime() - 3600 * 1000 * 36);
+                      picker.$emit("pick", [start, end]);
+                    }
+                  },
+                  {
+                    text: "最近72小时",
+                    onClick(picker) {
+                      const end = new Date();
+                      const start = new Date();
+                      start.setTime(start.getTime() - 3600 * 1000 * 72);
+                      picker.$emit("pick", [start, end]);
+                    }
+                  }
+                ]
+                },
                 Rows_filter:[],
                 height:window.innerHeight-300,
                 pageSize:20,
@@ -265,6 +315,11 @@ export default {
                 this.axios.get('/'+this.$WarmTable+'/waterprice/hiscanalwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
                     this.table.loading = false;
                     this.table.Rows_filter = res.data.rows;
+                    for(var i=0;i<this.table.Rows_filter.length;i++){
+                      var row=this.table.Rows_filter[i];
+                      row.z=row.z.toFixed(2);
+                      row.q=row.q.toFixed(3);
+                    }
                     this.table.total = res.data.total;
                 });
                 this.axios.get('/'+this.$WarmTable+'/waterprice/hiswaterchart',{params:{begintime:timecon[1],endtime:timecon[2],stcd:this.currentRow.stcd}}).then((res)=>{
@@ -284,6 +339,11 @@ export default {
                 this.axios.get('/'+this.$WarmTable+'/waterprice/hiscanalwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
                     this.table.loading = false;
                     this.table.Rows_filter = res.data.rows;
+                    for(var i=0;i<this.table.Rows_filter.length;i++){
+                      var row=this.table.Rows_filter[i];
+                      row.z=row.z.toFixed(2);
+                      row.q=row.q.toFixed(3);
+                    }
                     this.table.total = res.data.total;
                 });
             },  
