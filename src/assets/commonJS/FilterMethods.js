@@ -311,54 +311,43 @@ var FilterMethods =
                     });
                     break;
                 case "monthTable":
-                    echartData.chartName = "月表";
-
-
+                    echartData.chartName = "月水量图";
                     // y1轴
-                    echartData.y1.list = FilterMethods.methods.newArrayByObjArray(_data, "MA_Q", val => {
+                    echartData.y1.list = FilterMethods.methods.newArrayByObjArray(_data, "maq", val => {
                         if (isNaN(val) || val === "" || val == null) {
                             return 0;
                         }
                         return parseFloat(val).toFixed(3);
                     });
-
                     var y1max = (FilterMethods.methods.get_echart_max(echartData.y1.list) + 0.5).toFixed(3),
                         y1min = (FilterMethods.methods.get_echart_min(echartData.y1.list) - 0.5).toFixed(3);
                     echartData.y1.max = y1max; // y1最大值
                     echartData.y1.min = y1min < 0 ? 0 : y1min; // y1最小值
-
-                    echartData.y1.name = "月平均流量"; // Y1轴名字
-
-
+                    echartData.y1.name = "流量"; // Y1轴名字
                     // y2轴
-                    echartData.y2.list = FilterMethods.methods.newArrayByObjArray(_data, "MA_Z", val => {
+                    echartData.y2.list = FilterMethods.methods.newArrayByObjArray(_data, "maz", val => {
                         if (isNaN(val) || val === "" || val == null) {
                             return 0;
                         }
                         return parseFloat(val).toFixed(2);
                     });
-
                     var y2max = (FilterMethods.methods.get_echart_max(echartData.y2.list) + 0.5).toFixed(2),
                         y2min = (FilterMethods.methods.get_echart_min(echartData.y2.list) - 0.5).toFixed(2);
                     echartData.y2.max = y2max; // y2最大值
                     echartData.y2.min = y2min < 0 ? 0 : y2min; // y2最小值
-
-                    echartData.y2.name = "月平均水深"; // Y2轴名字
-
+                    echartData.y2.name = "水深"; // Y2轴名字
                     // y3轴
-                    echartData.y3.name = "月累计水量"; // Y2轴名字
-
-                    echartData.y3.list = FilterMethods.methods.newArrayByObjArray(_data, "MWQ", val => { // 过滤
+                    echartData.y3.name = "水量"; // Y2轴名字
+                    echartData.y3.list = FilterMethods.methods.newArrayByObjArray(_data, "mwq", val => { // 过滤
                         if (isNaN(val) || val === "" || val == null) {
                             return 0;
                         }
                         return parseFloat(val).toFixed(3);
                     });
-
-
+                    echartData.y3.max=FilterMethods.methods.get_echart_max(echartData.y3.list).toFixed(3);
                     // x轴
                     echartData.x.list = _data.map((val, index, array) => {
-                        var time = val.dt;
+                        var time = val.tm;
                         return time;
                     });
                     break;

@@ -29,7 +29,7 @@
                       <MenuItem name="2-1" to="/water-realanalysis">实时水情监测</MenuItem>
                       <MenuItem name="2-2" to="/water-houranalysis">小时水量监测</MenuItem>
                       <MenuItem name="2-3" to="/water-dayanalysis">日水量监测</MenuItem>
-                      <MenuItem name="2-4" to="/duty-infomanage">月水量监测</MenuItem>
+                      <MenuItem name="2-4" to="/water-monthanalysis">月水量监测</MenuItem>
                   </Submenu>
               <Submenu name="3">
                   <template slot="title">

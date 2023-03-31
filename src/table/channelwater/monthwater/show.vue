@@ -1,4 +1,4 @@
-<template>
+ <template>
 	<div>
 		<Content class="searchcon" style="padding-left:36px;">
             <Row :gutter="24" style="display: flex;">
@@ -6,12 +6,11 @@
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
                 <COL>
                   <el-date-picker
-                    v-model="form.daycon"
+                    v-model="form.monthcon"
                     @change="search"
                     size="mini"
-                    type="date"
-                    placeholder="选择时间"
-                    format="yyyy-MM-dd"
+                    type="month"
+                    placeholder="选择月"
                   >                   
                   </el-date-picker>
                 </COL>
@@ -50,19 +49,19 @@
             <COL span="11" style="padding-left:14px;">
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;font-size:16px;padding-bottom:12px;font-weight:bold;">
                 <Icon type="md-analytics" size="20"/>
-                &nbsp;&nbsp;&nbsp;&nbsp;{{currentRow.stnm}}日水量分析
+                &nbsp;&nbsp;&nbsp;&nbsp;{{currentRow.stnm}}月水量分析
             </Row>
               <Row type="flex" :gutter="16" class="rowtocol"> 
                 <COL>
                  <el-date-picker
                       v-model="table.date"
                       range-separator="至"
-                      start-placeholder="开始日期"
-                      end-placeholder="结束日期"
+                      start-placeholder="开始月份"
+                      end-placeholder="结束月份"
                       @change="handleDatePickerChange"
                       :picker-options="table.datePickerOptions"
                       unlink-panels
-                      type="daterange"
+                      type="monthrange"
                       size="mini"
                       style="min-width: 360px;margin-bottom:12px;"
                     ></el-date-picker>
@@ -71,7 +70,7 @@
              <!-- 选项卡 -->
             <Tabs type="card">
               <!-- 水情图 -->
-              <TabPane label="日水量图">
+              <TabPane label="月水量图">
               <div id="achart" 
               v-show="table.Rows_filter.length > 0"
               :style="{'width': chartwith+'px','height':(table.height+40)+'px'}"></div>
@@ -144,27 +143,27 @@ export default {
                 fixed: "left",
               },
               {
-                title: "日期",
+                title: "月份",
                 key: "tm",
-                width: 120,
+                width: 110,
                 align: "center",
               },   
               {
                 title: "平均水深(m)",
-                key: "daz",
+                key: "maz",
                 width: 110,
                 align: "center",
               },
               {
                 title: "平均流量(m³/s)",
                 width: 120,
-                key: "daq",
+                key: "maq",
                 align: "center",
               },  
               {
-                title: "日水量(m³)",
-                width: 110,
-                key: "dwq",
+                title: "月水量(m³)",
+                width: 120,
+                key: "mwq",
                 align: "center",
               },                 
             ],                
@@ -180,76 +179,81 @@ export default {
                     align: "center",
                 },
                 {
-                    title: "日期",
+                    title: "月份",
                     key: "tm",
-                    width: 130,
+                    width: 110,
                     align: "center",
                     sortable: "custom"
                 },
                 {
                     title: "平均水深(m)",
                     width: 120,
-                    key: "daz",
+                    key: "maz",
                     align: "center",
                 },
                 {                   
                     title: "平均流量(m³/s)",
                     width: 125,
-                    key: "daq",
+                    key: "maq",
                     align: "center",
                 },
                 {                   
-                    title: "日水量(m³)",
-                    width: 120,
-                    key: "dwq",
+                    title: "月水量(m³)",
+                    width: 140,
+                    key: "mwq",
                     align: "center",
                 }
                 ],
                 datePickerOptions:{
                   shortcuts: [
                   {
-                    text: "最近10天",
+                    text: "今年至今",
                     onClick(picker) {
                       const end = new Date();
-                      const start = new Date();
-                      start.setTime(start.getTime() - 3600 * 1000 * 24 * 10);
-                      picker.$emit("pick", [start, end]);
+                      const start = new Date(new Date().getFullYear(), 0);
+                      picker.$emit('pick', [start, end]);
                     }
                   },
                   {
-                    text: "最近15天",
+                    text: "最近6个月",
                     onClick(picker) {
                       const end = new Date();
                       const start = new Date();
-                      start.setTime(start.getTime() - 3600 * 1000 * 24 * 15);
-                      picker.$emit("pick", [start, end]);
+                      start.setMonth(start.getMonth() - 6);
+                      picker.$emit('pick', [start, end]);
                     }
                   },
                   {
-                    text: "最近30天",
+                    text: "最近1年",
                     onClick(picker) {
                       const end = new Date();
                       const start = new Date();
-                      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
-                      picker.$emit("pick", [start, end]);
+                      start.setMonth(start.getMonth() - 12);
+                      picker.$emit('pick', [start, end]);
                     }
                   },
                   {
-                    text: "最近60天",
+                    text: "去年",
                     onClick(picker) {
                       const end = new Date();
+                      end.setFullYear(end.getFullYear()-1);
+                      end.setMonth(11);
                       const start = new Date();
-                      start.setTime(start.getTime() - 3600 * 1000 * 24 * 60);
-                      picker.$emit("pick", [start, end]);
+                      start.setFullYear(start.getFullYear()-1);
+                      start.setMonth(0);
+                      picker.$emit('pick', [start, end]);
                     }
                   },
                   {
-                    text: "最近90天",
+                    text: "前年",
                     onClick(picker) {
                       const end = new Date();
+                      end.setFullYear(end.getFullYear()-2);
+                      end.setMonth(11);
                       const start = new Date();
-                      start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
-                      picker.$emit("pick", [start, end]);
+                      start.setFullYear(start.getFullYear()-2);
+                      start.setMonth(0);
+                      picker.$emit('pick', [start, end]);
                     }
                   }
                 ]
@@ -267,7 +271,7 @@ export default {
                 Z:[],
             },
             form:{
-                daycon:'',
+                monthcon:'',
                 searchmsg:'', 
                 orderBy:'tm',
                 sequence:'desc',
@@ -282,38 +286,39 @@ export default {
         mounted(){
           this.form.showsign=this.Cook.get("usertype");
           const end = new Date();
-          const start=new Date(end.getTime()-15*24*60*60*1000);
+          const start=new Date();
+          start.setMonth(start.getMonth() - 6);
           var timeSlot = [start, end];
-
           this.table.date=timeSlot;
-          this.form.daycon=end;
+          this.form.monthcon=end;
           this.Reload(true);
         },
         methods:{
-            search(){
-              
-              var end=new Date(this.form.daycon.getTime());
-              var start=new Date(this.form.daycon.getTime()-15*24*60*60*1000);
+            search(){             
+              var end=new Date(this.form.monthcon.getTime());
+              var start=new Date(this.form.monthcon.getTime());
+              start.setMonth(start.getMonth() - 6);
               var timeSlot=[start, end];
               this.table.date=timeSlot;
               this.Reload(true);
             },
             Reload(sign){
-                var datetime=this.$FilterData.elDatePicker_Filter(this.form.daycon,'dayTable');
+                var year=this.form.monthcon.getFullYear();
+                var month=this.form.monthcon.getMonth()+1;
                 this.loading=true;
-                this.axios.get('/'+this.$WarmTable+'/waterprice/daycanalwater',{params:{dt:datetime,stnm:this.form.searchmsg,showsign:this.form.showsign}}).then((res)=>{
+                this.axios.get('/'+this.$WarmTable+'/waterprice/monthcanalwater',{params:{year:year,month:month,stnm:this.form.searchmsg,showsign:this.form.showsign}}).then((res)=>{
                     this.loading = false;
                     this.data = res.data;
                     for(var i=0;i<this.data.length;i++){
                       var row=this.data[i];
-                      if(row.daz!=null){
-                        row.daz=row.daz.toFixed(2);
+                      if(row.maz!=null){
+                        row.maz=row.maz.toFixed(2);
                       }
-                      if(row.daq!=null){
-                        row.daq=row.daq.toFixed(3);
+                      if(row.maq!=null){
+                        row.maq=row.maq.toFixed(3);
                       }
-                      if(row.dwq!=null){
-                        row.dwq=row.dwq.toFixed(3);
+                      if(row.mwq!=null){
+                        row.mwq=row.mwq.toFixed(3);
                       }
                     }
                     if(sign){
@@ -327,25 +332,25 @@ export default {
                 var _pageSizes = this.table.pageSize;
                 var _bgincount=(_currentPage - 1) * _pageSizes+1;
                 var _endcount=_currentPage * _pageSizes;
-                var timecon=this.$FilterData.elDatePicker_Filter(this.table.date,'dayTable').split(',');
-                this.axios.get('/'+this.$WarmTable+'/waterprice/hisdaywater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
+                var timecon=this.$FilterData.elDatePicker_Filter(this.table.date,'monthTable').split(',');
+                this.axios.get('/'+this.$WarmTable+'/waterprice/hismonthwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
                     this.table.loading = false;
                     this.table.Rows_filter = res.data.rows;
                     for(var i=0;i<this.table.Rows_filter.length;i++){
                       var row=this.table.Rows_filter[i];
-                      if(row.daz!=null){
-                        row.daz=row.daz.toFixed(2);
+                      if(row.maz!=null){
+                        row.maz=row.maz.toFixed(2);
                       }
-                      if(row.daq!=null){
-                        row.daq=row.daq.toFixed(3);
+                      if(row.maq!=null){
+                        row.maq=row.maq.toFixed(3);
                       }
-                      if(row.dwq!=null){
-                        row.dwq=row.dwq.toFixed(3);
+                      if(row.mwq!=null){
+                        row.mwq=row.mwq.toFixed(3);
                       }
                     }
                     this.table.total = res.data.total;
                 });
-                this.axios.get('/'+this.$WarmTable+'/waterprice/hisdaychart',{params:{begintime:timecon[1],endtime:timecon[2],stcd:this.currentRow.stcd}}).then((res)=>{
+                this.axios.get('/'+this.$WarmTable+'/waterprice/hismonthchart',{params:{begintime:timecon[1],endtime:timecon[2],stcd:this.currentRow.stcd}}).then((res)=>{
                     this.table.loading = false;
                     var chartdata = res.data;
                     this.createChart(chartdata);
@@ -358,20 +363,20 @@ export default {
                 var _pageSizes = this.table.pageSize;
                 var _bgincount=(_currentPage - 1) * _pageSizes+1;
                 var _endcount=_currentPage * _pageSizes;
-                var timecon=this.$FilterData.elDatePicker_Filter(this.table.date,'dayTable').split(',');
-                this.axios.get('/'+this.$WarmTable+'/waterprice/hisdaywater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
+                var timecon=this.$FilterData.elDatePicker_Filter(this.table.date,'monthTable').split(',');
+                this.axios.get('/'+this.$WarmTable+'/waterprice/hismonthwater',{params:{begintime:timecon[1],endtime:timecon[2],begincount:_bgincount,endcount:_endcount,stcd:this.currentRow.stcd,orderBy:this.form.orderby,sequence:this.form.sequence}}).then((res)=>{
                     this.table.loading = false;
                     this.table.Rows_filter = res.data.rows;
                     for(var i=0;i<this.table.Rows_filter.length;i++){
                       var row=this.table.Rows_filter[i];
-                      if(row.daz!=null){
-                        row.daz=row.daz.toFixed(2);
+                      if(row.maz!=null){
+                        row.maz=row.maz.toFixed(2);
                       }
-                      if(row.daq!=null){
-                        row.daq=row.daq.toFixed(3);
+                      if(row.maq!=null){
+                        row.maq=row.maq.toFixed(3);
                       }
-                      if(row.dwq!=null){
-                        row.dwq=row.dwq.toFixed(3);
+                      if(row.mwq!=null){
+                        row.mwq=row.mwq.toFixed(3);
                       }
                     }
                     this.table.total = res.data.total;
@@ -403,7 +408,11 @@ export default {
               var ele = document.getElementById("achart");
               var now=new Date();
               if (chartdata.length > 0) {
-                var echartData = this.$FilterData.transform_QDSQ_data_into_ehart_data(chartdata,"dayTable");
+                var echartData = this.$FilterData.transform_QDSQ_data_into_ehart_data(chartdata,"monthTable");
+                var offeset=47;
+                if(echartData.y3.max>=100000){
+                    offeset=55;
+                }
                 var mintime=echartData.x.list[0],maxtime=echartData.x.list[echartData.x.list.length-1];               
                 if(mintime.slice(0,4)==maxtime.slice(0,4) && maxtime.slice(0,4)==now.getFullYear()){
                   for(var i=0;i<echartData.x.list.length;i++){
@@ -477,7 +486,7 @@ export default {
                       name: `${echartData.y2.name}m`,
                       type: "value",
                       position: 'right',
-                      offset: 50, // y轴位置的偏移量
+                      offset: offeset, // y轴位置的偏移量
                       axisLabel: {
                         formatter: "{value} "
                       },
@@ -529,9 +538,9 @@ export default {
                   ]
                 });
               }else{
-                document.getElementById("nochart").innerHTML = "暂无日水量数据";
+                document.getElementById("nochart").innerHTML = "暂无月水量数据";
               }
             },
         }
 }
-</script>
+</script>                               
