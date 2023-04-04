@@ -69,7 +69,10 @@
                       style="min-width: 360px;margin-bottom:12px;"
                     ></el-date-picker>
                 </COL>
-            </Row>
+                <COL>
+                  <div style="font-size:15px;margin-left:50px;margin-top:4px;">累计水量：{{echarts.HQ}}m³</div>
+                </COL>
+            </Row>           
              <!-- 选项卡 -->
             <Tabs type="card">
               <!-- 水情图 -->
@@ -303,6 +306,7 @@ export default {
                 TM:[],
                 Q:[],
                 Z:[],
+                HQ:0,
             },
             form:{
                 hourcon:'',
@@ -458,6 +462,8 @@ export default {
               var nowday=this.$FilterData.getNowDayString(now);
               if (chartdata.length > 0) {
                 var echartData = this.$FilterData.transform_QDSQ_data_into_ehart_data(chartdata,"hourTable");
+                //累计水量赋值
+                this.echarts.HQ=echartData.y3.total.toFixed(3);
                 var mintime=echartData.x.list[0].slice(0, 10),maxtime=echartData.x.list[echartData.x.list.length-1].slice(0, 10);               
                 if(mintime==nowday && maxtime==nowday){
                   echartData.chartName = "今日小时水量图";
@@ -589,6 +595,8 @@ export default {
                   ]
                 });
               }else{
+                //累计水量赋值
+                this.echarts.HQ='0.000';
                 let time = this.$FilterData.elDatePicker_Filter(this.table.date).split(',');
                 var begintime=time[1].slice(0,10);
                 var endtime=time[2].slice(0,10);

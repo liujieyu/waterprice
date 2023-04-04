@@ -2,7 +2,7 @@
 	<div style="overflow:hidden;">
 		<Breadcrumb :style="{margin: '10px'}">
             <BreadcrumbItem>信息维护</BreadcrumbItem>
-            <BreadcrumbItem>阶梯水价维护</BreadcrumbItem>
+            <BreadcrumbItem>执行水价标准维护</BreadcrumbItem>
         </Breadcrumb>
 		<STEPMANAGER></STEPMANAGER>
 	</div>

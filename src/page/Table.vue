@@ -36,7 +36,7 @@
                       <Icon type="ios-filing" />
                       信息维护
                   </template>
-                  <MenuItem name="3-1" to="/stepprice-manage">阶梯水价维护</MenuItem>
+                  <MenuItem name="3-1" to="/stepprice-manage">执行水价标准维护</MenuItem>
                   <MenuItem name="3-2" to="/userinfo-manage">用户信息维护</MenuItem>
               </Submenu>                 
               <Submenu name="4">

@@ -66,6 +66,9 @@
                       style="min-width: 360px;margin-bottom:12px;"
                     ></el-date-picker>
                 </COL>
+                <COL>
+                  <div style="font-size:15px;margin-left:50px;margin-top:4px;">累计水量：{{echarts.MWQ}}m³</div>
+                </COL>
             </Row>
              <!-- 选项卡 -->
             <Tabs type="card">
@@ -269,6 +272,7 @@ export default {
                 TM:[],
                 Q:[],
                 Z:[],
+                MWQ:'0.000',
             },
             form:{
                 monthcon:'',
@@ -409,6 +413,8 @@ export default {
               var now=new Date();
               if (chartdata.length > 0) {
                 var echartData = this.$FilterData.transform_QDSQ_data_into_ehart_data(chartdata,"monthTable");
+                //累计水量赋值
+                this.echarts.MWQ=echartData.y3.total.toFixed(3);
                 var offeset=47;
                 if(echartData.y3.max>=100000){
                     offeset=55;
@@ -538,6 +544,8 @@ export default {
                   ]
                 });
               }else{
+                //累计水量赋值
+                this.echarts.MWQ='0.000';
                 document.getElementById("nochart").innerHTML = "暂无月水量数据";
               }
             },

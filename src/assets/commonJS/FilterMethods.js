@@ -257,10 +257,13 @@ var FilterMethods =
                     echartData.y2.min = y2min < 0 ? 0 : y2min; // y2最小值
                     // y3轴
                     echartData.y3.name = "水量"; // Y2轴名字
+                    //累计水量
+                    echartData.y3.total=0;
                     echartData.y3.list = FilterMethods.methods.newArrayByObjArray(_data, "wq", val => { // 过滤
                         if (isNaN(val) || val === "" || val == null) {
                             return 0;
                         }
+                        echartData.y3.total+=parseFloat(val);
                         return parseFloat(val).toFixed(3);
                     });
                     // x轴
@@ -298,10 +301,13 @@ var FilterMethods =
                     echartData.y2.name = "水深"; // Y2轴名字
                     // y3轴
                     echartData.y3.name = "水量"; // Y2轴名字
+                    //累计水量
+                    echartData.y3.total=0;
                     echartData.y3.list = FilterMethods.methods.newArrayByObjArray(_data, "dwq", val => { // 过滤
                         if (isNaN(val) || val === "" || val == null) {
                             return 0;
                         }
+                        echartData.y3.total+=parseFloat(val);
                         return parseFloat(val).toFixed(3);
                     });
                     // x轴
@@ -338,10 +344,13 @@ var FilterMethods =
                     echartData.y2.name = "水深"; // Y2轴名字
                     // y3轴
                     echartData.y3.name = "水量"; // Y2轴名字
+                    //累计水量
+                    echartData.y3.total=0;
                     echartData.y3.list = FilterMethods.methods.newArrayByObjArray(_data, "mwq", val => { // 过滤
                         if (isNaN(val) || val === "" || val == null) {
                             return 0;
                         }
+                        echartData.y3.total+=parseFloat(val);
                         return parseFloat(val).toFixed(3);
                     });
                     echartData.y3.max=FilterMethods.methods.get_echart_max(echartData.y3.list).toFixed(3);
