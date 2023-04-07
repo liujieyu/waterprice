@@ -1,6 +1,31 @@
+import axios from 'axios';
 var FilterMethods =
 {
     methods: { 
+        //获取农户用户渠道信息
+        Get_CanalInfo(warmtable,showsign,callback){
+            axios.get('/'+warmtable+'/waterprice/getcanalinfo',{params:{showsign:showsign}})
+                    .then(res => {
+                        var data = res.data;
+
+                        if (typeof callback == "function") {
+
+                            callback(data);
+                        }
+                    });
+        },
+        //获取支渠用户渠道信息
+        Get_CanalInfoByAll(warmtable,canalcode,callback){
+            axios.get('/'+warmtable+'/waterprice/getallcanal',{params:{canalcode:canalcode}})
+                    .then(res => {
+                        var data = res.data;
+
+                        if (typeof callback == "function") {
+
+                            callback(data);
+                        }
+                    });
+        },
         // 浮点型数值过滤器
         Float_Filter(Z, figure) {
             if (Z) {

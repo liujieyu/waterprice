@@ -3,30 +3,15 @@
 		<Content class="searchcon">
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
                 <COL>
-                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名或卡号" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
+                 <Input search enter-button suffix="ios-search" placeholder="请输入用户编号或者名称" style="width:230px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
                 <COL>
                    <Select v-model="form.channel" @on-change="search" style="width:120px;margin-right: 15px;" clearable placeholder="所属渠道">
                  <Option v-for="item in channellist" :value="item.value" :key="item.value">{{ item.label }}</Option>
                  </Select>
                 </COL>
-                <COL>
-                  办卡时间：
-                   <el-date-picker
-                      v-model="form.carddate"
-                      range-separator="至"
-                      start-placeholder="开始日期"
-                      end-placeholder="结束日期"
-                      @change="search"
-                      unlink-panels
-                      type="daterange"
-                      size="small"
-                      format="yyyy-MM-dd"
-                      style="margin-right:15px;"
-                    ></el-date-picker>
-                </COL>
                 <COL> 
-                    <Button type="primary" icon="md-add"  style="width: auto;margin-right:20px;" @click="addClick">办卡</Button>
+                    <Button type="primary" icon="md-add"  style="width: auto;margin-right:20px;" @click="addClick">新增</Button>
                     <Button type="primary" icon="ios-trash" style="width: auto;" @click="delClick">删除</Button>
                 </COL>
             </Row>
@@ -61,32 +46,12 @@
                 :fixed="item.fixed"
                 :sortable="item.sortable"
                 ></el-table-column>
-                <el-table-column align="center" label="是否注销" :width="90">
-                <template slot-scope="scope">
-                    <span>{{ scope.row.ablesign==1?'正常使用':'已注销'}}</span>
-                </template>
-                </el-table-column>
-                 <el-table-column fixed="right" align="center" prop="oper" label="操作" width="180">
+                 <el-table-column fixed="right" align="center" prop="oper" label="操作" width="120">
                         <template slot-scope="scope">                           
-                            <el-button v-show="scope.row.ablesign==1" @click="handleClick(scope.row)" type="primary" size="mini" icon="el-icon-edit">修改</el-button>   
-                            <el-button v-show="scope.row.ablesign==1" @click="offClick(scope.row)" type="primary" size="mini" icon="el-icon-circle-close">注销</el-button>                      
+                            <el-button @click="handleClick(scope.row)" type="primary" size="mini" icon="el-icon-edit">修改</el-button>                       
                         </template>
                  </el-table-column>
             </el-table>
-            <div style="margin:10px 10px 0px 10px;overflow: hidden">
-                <div style="float: right;">
-                <Page 
-                    :total="list_input.total" 
-                    :current="list_input.current" show-sizer 
-                    :page-size="list_input.pagesize" :page-size-opts="list_input.pagesizeopts"
-                    @on-change="CurrentChange"
-                    @on-page-size-change="PagesizeChange"
-                    size="small"
-                    show-total
-                    show-elevator>
-                </Page>
-                </div>
-            </div>
         </Content>
         <el-dialog
           :title="userdetail"
@@ -101,12 +66,12 @@
 </template>
 <script type="text/javascript">
 import FilterMethods from "@/assets/commonJS/FilterMethods.js";
-import USEREDIT from "@/table/wateruser/mange/edituser.vue";
+import USEREDIT from "@/table/wateruser/canaluser/edituser.vue";
 export default {
         data(){
             return{
                 loading:false,
-                theight:window.innerHeight-240,
+                theight:window.innerHeight-200,
                 userdetail:'',//断面特征弹框标题
                 detailVisible:false,//是否显示弹框
                 detailitem:{itemshow:false},//弹框对象
@@ -116,7 +81,7 @@ export default {
             tablecolumns: [  
               {
                 title: "用户编号",
-                key: "farmcode",
+                key: "stcd",
                 width: 110,
                 align: "center",
                 sortable: "custom",
@@ -124,7 +89,7 @@ export default {
               },          
               {
                 title: "用户名",
-                key: "farmname",
+                key: "stnm",
                 width: 130,
                 align: "center",
                 sortable: "custom",
@@ -132,65 +97,30 @@ export default {
               },
               {
                 title: "所属渠道",
-                key: "canalcode",
+                key: "canalname",
                 width: 120,
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "承包面积(亩)",
+                title: "灌溉面积(亩)",
                 width: 125,
                 key: "area",
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "卡号",
+                title: "排序",
                 width: 100,
-                key: "cardnum",
+                key: "px",
                 align: "center",
                 sortable: "custom",
-              },
-              {
-                title: "办卡时间",
-                width: 140,
-                key: "carddate",
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "办卡人",
-                width: 100,
-                key: "contacts",
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "联系方式",
-                width: 120,
-                key: "conphone",
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "身份证号",
-                width: 160,
-                key: "cardid",
-                align: "center",
-                sortable: "custom",
-              },           
+              },         
             ],                
             data:[],
-            list_input:{
-                total:65,
-                pagesize:20,
-                pagesizeopts:[10,20,50,75,100,200],
-                current:1,
-            },
             form:{
                 searchmsg:'',
                 channel:'',
-                carddate:[],
                 orderBy:'PX',
                 sequence:'asc',
                 showsign:'', 
@@ -222,22 +152,10 @@ export default {
                 }else{
                     this.form.sequence="desc";
                 }
-                if(item.prop=="canalcode"){
-                  item.prop="PX";
-                }
                 this.form.orderby=item.prop.toUpperCase();
                 this.list_input.current=1;
                 this.Reload();
             },
-            PagesizeChange(pagesize){
-              this.list_input.pagesize=pagesize;
-              this.list_input.current=1;
-              this.Reload();
-            },
-            CurrentChange(index){
-                this.list_input.current=index;
-                this.Reload();
-            }, 
             Reload(){
                this.loading=true;
                 var paramobj=new Object();
@@ -247,28 +165,16 @@ export default {
                 if(this.form.channel!=null && this.form.channel!=''){
                   paramobj.canalcode=this.form.channel;
                 }
-                if(this.form.carddate!=null && this.form.carddate.length>0){
-                  var daterange=this.$FilterData.elDatePicker_Filter(this.form.carddate,'dayTable').split(",");
-                  paramobj.begintime=daterange[1]+" 00:00:00";
-                  paramobj.endtime=daterange[2]+" 23:59:59";
-                }
-                var _currentPage = this.list_input.current;
-                var _pageSizes = this.list_input.pagesize;
-                var _bgincount=(_currentPage - 1) * _pageSizes+1;
-                var _endcount=_currentPage * _pageSizes;
-                paramobj.begincount=_bgincount;
-                paramobj.endcount=_endcount;
                 paramobj.orderBy=this.form.orderBy;
                 paramobj.sequence=this.form.sequence;
                 paramobj.showsign=this.form.showsign;
-                this.axios.get('/'+this.$WarmTable+'/waterprice/farmuserpage',{params:paramobj}).then(res => {
+                this.axios.get('/'+this.$WarmTable+'/waterprice/getwatersite',{params:paramobj}).then(res => {
                     this.loading=false;    
-                    this.data = res.data.rows;
-                    this.list_input.total=res.data.total;                                       
+                    this.data = res.data;                                   
                 });
             },
             indexMethod(index){
-              return index+1+this.list_input.pagesize*(this.list_input.current-1);
+              return index+1;
             },
             //选中功能
             handleSelectionChange(val){
@@ -277,23 +183,23 @@ export default {
             delClick(){
               if(this.multipleSelection==null || this.multipleSelection.length==0){
                 this.$message({
-                  message: '请选择要删除的农户用户信息',
+                  message: '请选择要删除的支渠用户信息',
                   type: 'warning'
                 });
               }else{
-                var farmids="";
+                var canalids="";
                 for(var i=0;i<this.multipleSelection.length;i++){
-                  farmids+=this.multipleSelection[i].id;
+                  canalids+=this.multipleSelection[i].id;
                   if(i<this.multipleSelection.length-1){
-                    farmids+=",";
+                    canalids+=",";
                   }
                 }
-                this.$confirm('确定删除这'+this.multipleSelection.length+'条农户用户信息?', '提示', {
+                this.$confirm('确定删除这'+this.multipleSelection.length+'条支渠用户信息?', '提示', {
                   confirmButtonText: '确定',
                   cancelButtonText: '取消',
                   type: 'warning'
                 }).then(() => {
-                  this.axios.get('/'+this.$WarmTable+'/waterprice/delfarmuser',{params:{ids:farmids}}).then((res)=>{
+                  this.axios.get('/'+this.$WarmTable+'/waterprice/delcanaluser',{params:{ids:canalids}}).then((res)=>{
                     this.$message({
                       type: 'success',
                       message: '删除成功!'
@@ -305,36 +211,20 @@ export default {
               }
             },
             addClick(){
-              this.userdetail="新增办卡信息";
+              this.userdetail="新增支渠用户信息";
               this.detailitem.editsign="add";
               this.detailitem.itemshow=true;
               this.detailitem.channellist=this.channellist;
               this.detailVisible=true;
             },
             handleClick(item){
-              this.userdetail="修改办卡信息";
+              this.userdetail="修改支渠用户信息";
               this.detailitem.editsign="update";
               this.detailitem.itemshow=true;
               this.detailitem.id=item.id;
-              this.detailitem.farmcode=item.farmcode;
+              this.detailitem.stcd=item.stcd;
               this.detailitem.channellist=this.channellist;
               this.detailVisible=true;
-            },
-            offClick(item){
-              this.$confirm('确定注销农户用户'+item.farmname+'?', '提示', {
-                  confirmButtonText: '确定',
-                  cancelButtonText: '取消',
-                  type: 'warning'
-                }).then(() => {
-                  this.axios.post('/'+this.$WarmTable+'/waterprice/updatefarmuser',{id:item.id,ablesign:0}).then((res)=>{
-                     this.$message({
-                        type: 'success',
-                        message: '农户用户'+item.farmname+'注销成功!'
-                      });
-                     this.Reload();
-                  });
-                }).catch(() => {         
-                });              
             },
             closeUDialog(){
               this.detailVisible=false;

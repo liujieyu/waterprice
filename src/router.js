@@ -9,12 +9,14 @@ export default new Router({
     {path: '/loginyuejin', component: () => import('./views/LoginYuejin.vue')},
     {path: '/loginwuxi', component: () => import('./views/LoginWuxi.vue')},
     {path: '/home', component: () => import('./Home.vue'),children:[
-    //阶梯水价标准维护
+    //执行水价标准维护
     { path: '/stepprice-manage',component: () => import('./table/stepprice/manage/list.vue') },
     //阶梯水价查询
     { path: '/stepprice-show',component: () => import('./table/stepprice/show/list.vue') },
-    //用户信息维护
+    //农户用户信息维护
     { path: '/userinfo-manage',component: () => import('./table/wateruser/mange/list.vue') },
+    //支渠用户信息维护
+    { path: '/canaluser-manage',component: () => import('./table/wateruser/canaluser/list.vue') },
     //用户信息查询
     { path: '/userinfo-show',component: () => import('./table/wateruser/show/list.vue') },
     //水费充值

@@ -10,22 +10,15 @@
         style="display: flex;flex-wrap: wrap;"
       >
 <el-tabs value="usertab">
-    <el-tab-pane label="用户基本信息" name="usertab">
-      <el-form-item label="用户名：" prop="username">
-          <el-input v-model="form.username" placeholder="请输入" style="width:120px"></el-input>
+    <el-tab-pane label="农户用户基本信息" name="usertab">
+      <el-form-item label="用户编号：" prop="farmcode">
+          <el-input v-model="form.farmcode" placeholder="请输入" style="width:160px"></el-input>
       </el-form-item>
-      <el-form-item label="用户类型：" prop="usertype">
-        <el-select v-model="form.usertype" filterable placeholder="请选择" style="width:120px">
-            <el-option
-            v-for="item in typelist"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-            </el-option>
-        </el-select>
+      <el-form-item label="用户名：" prop="farmname">
+          <el-input v-model="form.farmname" placeholder="请输入" style="width:160px"></el-input>
       </el-form-item>
-      <el-form-item label="所属渠道：" prop="channel" >
-          <el-select v-model="form.channel" filterable placeholder="请选择" style="width:120px">
+      <el-form-item label="所属渠道：" prop="canalcode" >
+          <el-select v-model="form.canalcode" filterable placeholder="请选择" style="width:160px">
             <el-option
             v-for="item in channelist"
             :key="item.value"
@@ -34,15 +27,8 @@
             </el-option>
           </el-select>
       </el-form-item>
-      <el-form-item label="所属乡镇：" prop="addvcd" >
-        <el-select v-model="form.addvcd" filterable placeholder="请选择" style="width:120px">
-            <el-option
-            v-for="item in adresslist"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value">
-            </el-option>
-          </el-select>
+      <el-form-item label="承包面积：" prop="area" >
+        <el-input v-model="form.area" placeholder="请输入" style="width:148px" oninput="value=value.replace(/[^\d]/g,'')"></el-input>亩
       </el-form-item>
     </el-tab-pane>
   </el-tabs>
@@ -50,21 +36,24 @@
 <el-tabs value="cardtab">
     <el-tab-pane label="办卡信息" name="cardtab">
       <el-form-item label="卡号：" prop="cardnum">
-          <el-input v-model="form.cardnum" placeholder="请输入" style="width:120px"></el-input>
+          <el-input v-model="form.cardnum" placeholder="请输入" style="width:160px"></el-input>
       </el-form-item>
-      <el-form-item label="办卡人：" prop="man">
-          <el-input v-model="form.man" placeholder="请输入" style="width:120px"></el-input>
+      <el-form-item label="办卡人：" prop="contacts">
+          <el-input v-model="form.contacts" placeholder="请输入" style="width:160px"></el-input>
       </el-form-item>
-      <el-form-item label="手机号码：" prop="phone">
-          <el-input v-model="form.phone" placeholder="请输入" style="width:120px" @input="value=value.replace(/^\.+|[^\d.]/g,'')"></el-input>
+      <el-form-item label="联系方式：" prop="conphone">
+          <el-input v-model="form.conphone" placeholder="请输入" style="width:160px" oninput="value=value.replace(/[^\d]/g,'')"></el-input>
       </el-form-item>
-      <el-form-item label="办卡日期：" prop="carddate">
-          <el-date-picker v-model="form.carddate" value-format="yyyy-MM-dd" type="date" placeholder="选择日期" style="width:120px;"></el-date-picker>
+      <el-form-item label="身份证号：" prop="cardid">
+          <el-input v-model="form.cardid" placeholder="请输入" style="width:160px"></el-input>
+      </el-form-item>
+      <el-form-item label="办卡时间：" prop="carddate">
+          <el-date-picker v-model="form.carddate" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" placeholder="选择时间" style="width:180px;"></el-date-picker>
       </el-form-item>
     </el-tab-pane>
 </el-tabs> 
 <el-form-item>
-    <el-button type="primary" @click="onSubmit" style="margin-right:20px;margin-left:160px;" size="small">保存</el-button>
+    <el-button type="primary" @click="onSubmit" style="margin-right:20px;margin-left:210px;" size="small">保存</el-button>
     <el-button type="info" @click="onCannel" size="small">取消</el-button>
 </el-form-item>       
 </el-form>
@@ -79,38 +68,101 @@ export default {
     return {
       loading:false,
       form: {
-        username:"",
-        usertype:"",
-        channel: "",
-        addvcd: "",
+        id:"",
+        farmcode:"",
+        farmname:"",
+        canalcode: "",
+        area: "",
         cardnum: "",
-        man: "",
-        phone: "",
+        contacts: "",
+        conphone: "",
+        cardid:"",
         carddate: "",
+        syssign:"",
+        ablesign:"",
       },
       routerurl:'',
       channelist:[],
-      adresslist:[],
-      typelist:[],
       rules: {
-        username: [{ required: true, message: "用户名不能为空",trigger: 'blur'},{ min: 1, max: 10, message: '长度在1到10个字符', trigger: 'blur'}],
-        usertype: [{ required: true, message: "请选择用户类型",trigger: 'change'}],
-        channel: [{ required: true, message: "请选择所属渠道",trigger: 'change'}],
-        addvcd: [{ required: true, message: "请选择乡镇",trigger: 'change'}],
-        cardnum: [{ required: true, message: "卡号不能为空",trigger: 'blur'}],  
-        man: [{ required: true, message: "办卡人不能为空",trigger: 'blur'}], 
-        phone: [{ required: true, message: "手机号码不能为空",trigger: 'blur',}],
-        carddate: [{ required: true, message: "请选择办卡日期",trigger: 'change'}],
+        farmcode: [{ required: true, message: "用户编号不为空",trigger: 'blur'}],
+        farmname: [{ required: true, message: "用户名不为空",trigger: 'blur'}],
+        canalcode: [{ required: true, message: "请选择所属渠道",trigger: 'change'}],
+        area: [{ required: true, message: "承包面积不为空",trigger: 'blur'}],
+        cardnum: [{ required: true, message: "卡号不为空",trigger: 'blur'}],  
+        contacts: [{ required: true, message: "联系人不为空",trigger: 'blur'}], 
+        conphone: [{ required: true, message: "联系方式不为空",trigger: 'blur'}], 
+        carddate: [{ required: true, message: "请选择办卡时间",trigger: 'change'}],
       },
     };
   },
   mounted() { 
-
+    this.form.syssign=this.Cook.get("usertype");
+    this.form.ablesign=1;
+    this.channelist=this.info.channellist;   
+    this.form.carddate=this.getTodayDate();
+    if(this.info.editsign=="add"){
+        this.routerurl='/'+this.$WarmTable+'/waterprice/addfarmuser';
+    }else{
+        this.routerurl='/'+this.$WarmTable+'/waterprice/updatefarmuser';
+        this.axios.get('/'+this.$WarmTable+'/waterprice/farmuserbyid',{params:{id:this.info.id}}).then((res)=>{
+          this.form=res.data;
+        });
+    }
   },
    methods: {
+    //获取今日日期时间
+    getTodayDate(){
+      var date = new Date();
+          var Month = date.getMonth()+1;
+          var Hours = date.getHours();
+          var Minutes = date.getMinutes();
+          var Seconds = date.getSeconds();
+          if (Hours<10) {
+            Hours = `0${Hours}`
+          }
+          if (Minutes<10) {
+            Minutes = `0${Minutes}`
+          }
+          if (Seconds<10) {
+            Seconds = `0${Seconds}`
+          }
+          if (Month<10) {
+            Month = `0${Month}`
+          }
+        return `${date.getFullYear()}-${Month}-${date.getDate()} ${Hours}:${Minutes}:${Seconds}`;
+    },
     onSubmit(){
       this.$refs['userform'].validate((valid) => {
-          if (valid) {  }
+          if (valid) { 
+            if(this.info.editsign=="add" || (this.info.editsign=="update" && this.info.farmcode!=this.form.farmcode)){
+              this.axios.get('/'+this.$WarmTable+'/waterprice/checkfarmcode',{params:{farmcode:this.form.farmcode}}).then((res)=>{
+                var status=res.data.checksign;
+                if(status=="yes"){
+                  this.$message.error(res.data.warning);
+                }else{
+                  this.loading=true;
+                  this.axios.post(this.routerurl,this.form).then((res) => {
+                    this.loading=false;
+                    this.$emit("closewindows");
+                    this.$message({
+                      type: "success",
+                      message: "保存农户用户信息成功!"
+                    });
+                  });
+                }
+              });
+            }else{
+              this.loading=true;
+              this.axios.post(this.routerurl,this.form).then((res) => {
+                   this.loading=false;
+                    this.$emit("closewindows");
+                    this.$message({
+                      type: "success",
+                      message: "保存农户用户信息成功!"
+                    });
+                  });
+            }
+           }
       });
     },
     onCannel(){
