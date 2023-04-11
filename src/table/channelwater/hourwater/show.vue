@@ -3,13 +3,13 @@
 		<Content class="searchcon" style="padding-left:36px;">
             <Row :gutter="24" style="display: flex;">
             <COL span="11">
-            <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
+            <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:9px;"> 
                 <COL>
                   <el-date-picker
                     v-model="form.hourcon"
                     @change="search"
                     :picker-options="hourPicherCut"
-                    size="mini"
+                    size="small"
                     type="datetime"
                     placeholder="选择时间"
                     format="yyyy-MM-dd HH"
@@ -17,7 +17,7 @@
                   </el-date-picker>
                 </COL>
                 <COL>
-                 <Input search enter-button suffix="ios-search" placeholder="请输入站点名称" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
+                 <Input search enter-button suffix="ios-search" placeholder="请输入站点名称" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-1px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
             </Row>
             <Row class="fgline"></Row>

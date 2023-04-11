@@ -9,13 +9,12 @@
         </div>
         <Sider hide-trigger style="background-color: '#fff !important';padding: '80px 0 0 0'; overflow: 'scroll;';color:'#333 !important'">
           <!-- 菜单 -->
-          <Menu active-name="1-1" :open-names="['1','1-1']" theme="dark" width="200">
+          <Menu active-name="1-1" :open-names="['1','1-4']" theme="dark" width="200" accordion="true">
               <Submenu name="1">
                   <template slot="title">
                       <Icon type="ios-albums" />
                       智慧水价
                   </template>
-                      <MenuItem name="1-1" to="/stepprice-show">阶梯水价查询</MenuItem>
                       <MenuItem name="1-2" to="/userinfo-show">用户信息查询</MenuItem>
                       <MenuItem name="1-3" to="/water-recharge">水费充值</MenuItem>
                       <MenuItem name="1-4" to="/water-realinfo">实时用水信息</MenuItem>
@@ -33,35 +32,45 @@
                   </Submenu>
               <Submenu name="3">
                   <template slot="title">
+                      <Icon type="ios-cog" />
+                      超额用水加价
+                  </template>
+                  <MenuItem name="3-1" to="/stepprice-manage">支渠用户超水信息</MenuItem>
+                  <MenuItem name="3-2" to="/canaluser-manage">农户用户超水信息</MenuItem>
+                  <Submenu name="3-3">
+                    <template slot="title">
+                      <Icon type="ios-menu" />
+                      执行水价标准
+                    </template>
+                      <MenuItem name="3-3-1" to="/stepprice-showcanal">支渠用户标准</MenuItem>
+                      <MenuItem name="3-3-2" to="/stepprice-showfarm">农户用户标准</MenuItem>
+                  </Submenu>                 
+              </Submenu>
+              <Submenu name="4">
+                  <template slot="title">
+                      <Icon type="md-log-in" />
+                      节约用水回购
+                  </template>
+                  <MenuItem name="4-1" to="/stepprice-manage">支渠用户节水信息</MenuItem>
+                  <MenuItem name="4-2" to="/canaluser-manage">农户用户节水信息</MenuItem>
+                  <Submenu name="4-3">
+                    <template slot="title">
+                      <Icon type="ios-menu" />
+                      执行水价标准
+                    </template>
+                      <MenuItem name="4-3-1" to="/stepprice-backcanal">支渠用户标准</MenuItem>
+                      <MenuItem name="4-3-2" to="/stepprice-backfarm">农户用户标准</MenuItem>
+                  </Submenu> 
+              </Submenu>
+              <Submenu name="6">
+                  <template slot="title">
                       <Icon type="ios-filing" />
                       信息维护
                   </template>
-                  <MenuItem name="3-1" to="/stepprice-manage">执行水价标准维护</MenuItem>
-                  <MenuItem name="3-2" to="/canaluser-manage">支渠用户信息维护</MenuItem>
-                  <MenuItem name="3-3" to="/userinfo-manage">农户用户信息维护</MenuItem>
+                  <MenuItem name="6-1" to="/stepprice-manage">执行水价标准维护</MenuItem>
+                  <MenuItem name="6-2" to="/canaluser-manage">支渠用户信息维护</MenuItem>
+                  <MenuItem name="6-3" to="/userinfo-manage">农户用户信息维护</MenuItem>
               </Submenu>                 
-              <Submenu name="4">
-                  <template slot="title">
-                      <Icon type="ios-cog" />
-                      预警管理
-                  </template>
-                  <Submenu name="4-1">
-                    <template slot="title">
-                      <Icon type="ios-menu" />
-                      预警查询
-                    </template>
-                      <MenuItem name="4-1-1" to="/warm-siteinfo">站点预警查询</MenuItem>
-                      <MenuItem name="4-1-2" to="/warm-boxsended">预警短信查询</MenuItem>
-                  </Submenu>
-                  <Submenu name="4-2">
-                    <template slot="title">
-                      <Icon type="md-log-in" />
-                      短信查询
-                    </template>
-                      <MenuItem name="4-2-1" to="/warm-boxreceived">接收短信查询</MenuItem>
-                      <MenuItem name="4-2-2" to="/warm-boxsending">发送短信查询</MenuItem>
-                  </Submenu>
-              </Submenu>
           </Menu>
         </Sider>
       </div>
@@ -80,7 +89,7 @@ export default {
     };
   },
   mounted() { 
-    this.$router.push({path: '/stepprice-show'}); 
+    this.$router.push({path: '/water-realinfo'}); 
     this.Menu_toggle();
   },
   methods: {

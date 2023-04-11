@@ -1,15 +1,16 @@
 <template>
 	<div style="overflow:hidden;">
 		<Breadcrumb :style="{margin: '10px'}">
-            <BreadcrumbItem>智慧水价</BreadcrumbItem>
-            <BreadcrumbItem>阶梯水价查询</BreadcrumbItem>
+            <BreadcrumbItem>节约用水回购</BreadcrumbItem>
+            <BreadcrumbItem>执行水价标准</BreadcrumbItem>
+            <BreadcrumbItem>农户用户标准</BreadcrumbItem>
         </Breadcrumb>
-		<SETPSHOW></SETPSHOW>
+		<FARMBACK></FARMBACK>
 	</div>
 </template>
 
 <script type="text/javascript">
-  import SETPSHOW from '@/table/stepprice/show/show.vue';
+  import FARMBACK from '@/table/stepprice/backfarm/show.vue';
 	export default {
         data() {
         return { };
@@ -19,7 +20,7 @@
       methods: { },
       computed: { },
       components: { 
-      SETPSHOW,       
+      FARMBACK,       
       }
     }
 </script>

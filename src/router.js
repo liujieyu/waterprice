@@ -11,8 +11,14 @@ export default new Router({
     {path: '/home', component: () => import('./Home.vue'),children:[
     //执行水价标准维护
     { path: '/stepprice-manage',component: () => import('./table/stepprice/manage/list.vue') },
-    //阶梯水价查询
-    { path: '/stepprice-show',component: () => import('./table/stepprice/show/list.vue') },
+    //支渠用户超额水价标准查询
+    { path: '/stepprice-showcanal',component: () => import('./table/stepprice/showcanal/list.vue') },
+    //支渠用户回购水价标准查询
+    { path: '/stepprice-backcanal',component: () => import('./table/stepprice/backcanal/list.vue') },
+    //农户用户超额水价标准查询
+    { path: '/stepprice-showfarm',component: () => import('./table/stepprice/showfarm/list.vue') },
+    //农户用户回购水价标准查询
+    { path: '/stepprice-backfarm',component: () => import('./table/stepprice/backfarm/list.vue') },
     //农户用户信息维护
     { path: '/userinfo-manage',component: () => import('./table/wateruser/mange/list.vue') },
     //支渠用户信息维护
