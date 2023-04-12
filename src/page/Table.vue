@@ -70,6 +70,7 @@
                   <MenuItem name="6-1" to="/stepprice-manage">执行水价标准维护</MenuItem>
                   <MenuItem name="6-2" to="/canaluser-manage">支渠用户信息维护</MenuItem>
                   <MenuItem name="6-3" to="/userinfo-manage">农户用户信息维护</MenuItem>
+                  <MenuItem name="6-4" to="/loginuser-manage">权限管理</MenuItem>
               </Submenu>                 
           </Menu>
         </Sider>

@@ -125,14 +125,30 @@ export default {
   },
   methods: {
     close(){
-      this.$router.push({path: '/loginyuejin'});
+      debugger;
+      var loginurl=this.Cook.get("loginurl");
+      this.Cook.set("username",null);
+      this.Cook.set("channelcode",null);
+      this.Cook.set("channelname",null);
+      this.Cook.set("usertype",null);
+      this.Cook.set("title",null);
+      this.Cook.set("loginurl",null);
+      this.$router.push({path: loginurl});
     },
   },
   computed: {},
   mounted() {
+    window.addEventListener('onbeforeunload',()=>{
+      this.Cook.set("username",null);
+      this.Cook.set("channelcode",null);
+      this.Cook.set("channelname",null);
+      this.Cook.set("usertype",null);
+      this.Cook.set("title",null);
+      this.Cook.set("loginurl",null);
+    });
     var username=this.Cook.get("username");
-        if(username==null || username==''){
-            this.$router.push({path: '/loginyuejin'});
+        if(username==null || username=='' || username=='null'){
+            this.$router.push({path: '/'});
             return;
         }
     this.loginform.name=username;

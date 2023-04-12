@@ -23,6 +23,8 @@ export default new Router({
     { path: '/userinfo-manage',component: () => import('./table/wateruser/mange/list.vue') },
     //支渠用户信息维护
     { path: '/canaluser-manage',component: () => import('./table/wateruser/canaluser/list.vue') },
+    //权限管理
+    { path: '/loginuser-manage',component: () => import('./table/authority/list.vue') },
     //用户信息查询
     { path: '/userinfo-show',component: () => import('./table/wateruser/show/list.vue') },
     //水费充值

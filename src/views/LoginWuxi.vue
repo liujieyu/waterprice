@@ -67,22 +67,22 @@
                       type: 'warning'
                     });
                 }else{
-                    // this.axios.post('/'+this.$WarmTable+'/manage/authuser',{username:this.form.acc,password:this.form.pwd}).then((res)=>{
-                    //     console.log(res);
-                    //     if (res.data.errcode == 400) {
-                    //         this.$message({
-                    //           message: res.data.message,
-                    //           type: 'warning'
-                    //         });
-                    //     }else{
+                    this.axios.get('/'+this.$WarmTable+'/waterprice/checkloginname',{params:{loginname:this.form.acc,loginpass:this.form.pwd,showsign:"WX"}}).then((res)=>{
+                        if (res.data.checksign == "no") {
+                            this.$message({
+                              message: res.data.warning,
+                              type: 'warning'
+                            });
+                        }else{
                             this.Cook.set("username",this.form.acc);
                             this.Cook.set("channelcode","V102000000");
                             this.Cook.set("channelname","五溪干渠");
                             this.Cook.set("usertype","WX");
                             this.Cook.set("title","五溪水协会");
+                            this.Cook.set("loginurl",'/loginwuxi');
                             this.$router.push({path: '/home'});
-                    //     }
-                    // });
+                        }
+                    });
                 }
             }
         }
@@ -110,6 +110,7 @@
         bottom: 0;
         left: 0;
         right: 0;
+        padding-top:60px;
     }
 
     .el-icon-upload {
