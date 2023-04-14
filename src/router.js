@@ -23,6 +23,10 @@ export default new Router({
     { path: '/userinfo-manage',component: () => import('./table/wateruser/mange/list.vue') },
     //支渠用户信息维护
     { path: '/canaluser-manage',component: () => import('./table/wateruser/canaluser/list.vue') },
+    //支渠用户超水信息
+    { path: '/canal-overwater',component: () => import('./table/canalwatertj/usewater/list.vue') },
+    //支渠用户节水信息
+    { path: '/canal-backwater',component: () => import('./table/canalwatertj/backwater/list.vue') },
     //权限管理
     { path: '/loginuser-manage',component: () => import('./table/authority/list.vue') },
     //用户信息查询

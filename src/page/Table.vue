@@ -12,65 +12,65 @@
           <Menu active-name="1-1" :open-names="['1','1-4']" theme="dark" width="200" accordion="true">
               <Submenu name="1">
                   <template slot="title">
-                      <Icon type="ios-albums" />
+                      <Icon type="ios-apps" />
                       智慧水价
                   </template>
-                      <MenuItem name="1-2" to="/userinfo-show">用户信息查询</MenuItem>
-                      <MenuItem name="1-3" to="/water-recharge">水费充值</MenuItem>
-                      <MenuItem name="1-4" to="/water-realinfo">实时用水信息</MenuItem>
-                      <MenuItem name="1-5" to="/water-usageinfo">水费使用统计</MenuItem>
-              </Submenu>
+                      <MenuItem name="1-2" to="/userinfo-show"><Icon type="ios-paper-outline" />用户信息查询</MenuItem>
+                      <MenuItem name="1-3" to="/water-recharge"><Icon type="ios-paper-outline" />水费充值</MenuItem>
+                      <MenuItem name="1-4" to="/water-realinfo"><Icon type="ios-paper-outline" />实时用水信息</MenuItem>
+                      <MenuItem name="1-5" to="/water-usageinfo"><Icon type="ios-paper-outline" />水费使用统计</MenuItem>
+              </Submenu>             
               <Submenu name="2">
-                      <template slot="title">
-                        <Icon type="ios-paper" />
-                        支渠水量分析
-                      </template>
-                      <MenuItem name="2-1" to="/water-realanalysis">实时水情监测</MenuItem>
-                      <MenuItem name="2-2" to="/water-houranalysis">小时水量监测</MenuItem>
-                      <MenuItem name="2-3" to="/water-dayanalysis">日水量监测</MenuItem>
-                      <MenuItem name="2-4" to="/water-monthanalysis">月水量监测</MenuItem>
-                  </Submenu>
-              <Submenu name="3">
                   <template slot="title">
-                      <Icon type="ios-cog" />
+                      <Icon type="ios-apps" />
                       超额用水加价
                   </template>
-                  <MenuItem name="3-1" to="/stepprice-manage">支渠用户超水信息</MenuItem>
-                  <MenuItem name="3-2" to="/canaluser-manage">农户用户超水信息</MenuItem>
-                  <Submenu name="3-3">
+                  <MenuItem name="2-1" to="/canal-overwater"><Icon type="ios-paper-outline" />支渠用户超水信息</MenuItem>
+                  <MenuItem name="2-2" to="/canaluser-manage"><Icon type="ios-paper-outline" />农户用户超水信息</MenuItem>
+                  <Submenu name="2-3">
                     <template slot="title">
-                      <Icon type="ios-menu" />
+                      <Icon type="logo-buffer" />
                       执行水价标准
                     </template>
-                      <MenuItem name="3-3-1" to="/stepprice-showcanal">支渠用户标准</MenuItem>
-                      <MenuItem name="3-3-2" to="/stepprice-showfarm">农户用户标准</MenuItem>
+                      <MenuItem name="2-3-1" to="/stepprice-showcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
+                      <MenuItem name="2-3-2" to="/stepprice-showfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
                   </Submenu>                 
               </Submenu>
-              <Submenu name="4">
+              <Submenu name="3">
                   <template slot="title">
-                      <Icon type="md-log-in" />
+                      <Icon type="ios-apps" />
                       节约用水回购
                   </template>
-                  <MenuItem name="4-1" to="/stepprice-manage">支渠用户节水信息</MenuItem>
-                  <MenuItem name="4-2" to="/canaluser-manage">农户用户节水信息</MenuItem>
-                  <Submenu name="4-3">
+                  <MenuItem name="3-1" to="/canal-backwater"><Icon type="ios-paper-outline" />支渠用户节水信息</MenuItem>
+                  <MenuItem name="3-2" to="/canaluser-manage"><Icon type="ios-paper-outline" />农户用户节水信息</MenuItem>
+                  <Submenu name="3-3">
                     <template slot="title">
-                      <Icon type="ios-menu" />
+                      <Icon type="logo-buffer" />
                       执行水价标准
                     </template>
-                      <MenuItem name="4-3-1" to="/stepprice-backcanal">支渠用户标准</MenuItem>
-                      <MenuItem name="4-3-2" to="/stepprice-backfarm">农户用户标准</MenuItem>
+                      <MenuItem name="3-3-1" to="/stepprice-backcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
+                      <MenuItem name="3-3-2" to="/stepprice-backfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
                   </Submenu> 
               </Submenu>
+              <Submenu name="4">
+                      <template slot="title">
+                        <Icon type="ios-apps" />
+                        支渠水量监测
+                      </template>
+                      <MenuItem name="4-1" to="/water-realanalysis"><Icon type="ios-paper-outline" />实时水情监测</MenuItem>
+                      <MenuItem name="4-2" to="/water-houranalysis"><Icon type="ios-paper-outline" />小时水量监测</MenuItem>
+                      <MenuItem name="4-3" to="/water-dayanalysis"><Icon type="ios-paper-outline" />日水量监测</MenuItem>
+                      <MenuItem name="4-4" to="/water-monthanalysis"><Icon type="ios-paper-outline" />月水量监测</MenuItem>
+                  </Submenu>
               <Submenu name="6">
                   <template slot="title">
-                      <Icon type="ios-filing" />
+                      <Icon type="ios-apps" />
                       信息维护
                   </template>
-                  <MenuItem name="6-1" to="/stepprice-manage">执行水价标准维护</MenuItem>
-                  <MenuItem name="6-2" to="/canaluser-manage">支渠用户信息维护</MenuItem>
-                  <MenuItem name="6-3" to="/userinfo-manage">农户用户信息维护</MenuItem>
-                  <MenuItem name="6-4" to="/loginuser-manage">权限管理</MenuItem>
+                  <MenuItem name="6-1" to="/stepprice-manage"><Icon type="ios-paper-outline" />执行水价标准维护</MenuItem>
+                  <MenuItem name="6-2" to="/canaluser-manage"><Icon type="ios-paper-outline" />支渠用户信息维护</MenuItem>
+                  <MenuItem name="6-3" to="/userinfo-manage"><Icon type="ios-paper-outline" />农户用户信息维护</MenuItem>
+                  <MenuItem name="6-4" to="/loginuser-manage"><Icon type="ios-paper-outline" />权限管理</MenuItem>
               </Submenu>                 
           </Menu>
         </Sider>

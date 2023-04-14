@@ -64,7 +64,7 @@
                             </tr>
                         </thead>
                             <tr>
-                                <td>一级超水量：</td>
+                                <td>一级超水：</td>
                                 <td class="itemtd">
                                     <el-form-item prop="onelolim"> 
                                         <el-input v-model="form.onelolim" placeholder="请输入" style="width:110px" readonly ></el-input>m³ -  
@@ -80,7 +80,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>二级超水量：</td>
+                                <td>二级超水：</td>
                                 <td class="itemtd">
                                     <el-form-item prop="twololim"> 
                                         <el-input v-model="form.twololim" placeholder="请输入" style="width:110px" readonly ></el-input>m³ - 
@@ -96,7 +96,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>三级超水量：</td>
+                                <td>三级超水：</td>
                                 <td class="itemtd">
                                     <el-form-item prop="thrlolim"> 
                                         <el-input v-model="form.thrlolim" placeholder="请输入" style="width:110px" readonly ></el-input>m³ - 
@@ -128,7 +128,7 @@
                             </tr>
                         </thead>
                             <tr>
-                                <td>一级节水量：</td>
+                                <td>一级节水：</td>
                                 <td class="itemtd">
                                     <el-form-item prop="saveonelo"> 
                                         <el-input v-model="form.saveonelo" placeholder="请输入" style="width:110px" readonly ></el-input>m³ -  
@@ -144,7 +144,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>二级节水量：</td>
+                                <td>二级节水：</td>
                                 <td class="itemtd">
                                     <el-form-item prop="savetwolo"> 
                                         <el-input v-model="form.savetwolo" placeholder="请输入" style="width:110px;" readonly ></el-input>m³ -  
@@ -159,7 +159,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td>三级节水量：</td>
+                                <td>三级节水：</td>
                                 <td class="itemtd">
                                     <el-form-item prop="savethrlo"> 
                                         <el-input v-model="form.savethrlo" placeholder="请输入" style="width:110px" readonly ></el-input>m³ - 
