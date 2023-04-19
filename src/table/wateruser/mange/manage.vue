@@ -3,7 +3,7 @@
 		<Content class="searchcon">
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
                 <COL>
-                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名或卡号" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
+                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名或编号" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
                 <COL>
                    <Select v-model="form.channel" @on-change="search" style="width:120px;margin-right: 15px;" clearable placeholder="所属渠道">
@@ -11,7 +11,7 @@
                  </Select>
                 </COL>
                 <COL>
-                  办卡时间：
+                  创建时间：
                    <el-date-picker
                       v-model="form.carddate"
                       range-separator="至"
@@ -26,7 +26,7 @@
                     ></el-date-picker>
                 </COL>
                 <COL> 
-                    <Button type="primary" icon="md-add"  style="width: auto;margin-right:20px;" @click="addClick">办卡</Button>
+                    <Button type="primary" icon="md-add"  style="width: auto;margin-right:20px;" @click="addClick">新增</Button>
                     <Button type="primary" icon="ios-trash" style="width: auto;" @click="delClick">删除</Button>
                 </COL>
             </Row>
@@ -110,7 +110,7 @@ export default {
                 userdetail:'',//断面特征弹框标题
                 detailVisible:false,//是否显示弹框
                 detailitem:{itemshow:false},//弹框对象
-                dialogwidth:(600/window.innerWidth*100)+"%",
+                dialogwidth:(640/window.innerWidth*100)+"%",
                 multipleSelection: [], 
                 // 表头设置
             tablecolumns: [  
@@ -145,21 +145,14 @@ export default {
                 sortable: "custom",
               },
               {
-                title: "卡号",
-                width: 100,
-                key: "cardnum",
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "办卡时间",
+                title: "创建时间",
                 width: 140,
                 key: "carddate",
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "办卡人",
+                title: "联系人",
                 width: 100,
                 key: "contacts",
                 align: "center",
@@ -305,14 +298,14 @@ export default {
               }
             },
             addClick(){
-              this.userdetail="新增办卡信息";
+              this.userdetail="新增农户用户信息";
               this.detailitem.editsign="add";
               this.detailitem.itemshow=true;
               this.detailitem.channellist=this.channellist;
               this.detailVisible=true;
             },
             handleClick(item){
-              this.userdetail="修改办卡信息";
+              this.userdetail="修改农户用户信息";
               this.detailitem.editsign="update";
               this.detailitem.itemshow=true;
               this.detailitem.id=item.id;

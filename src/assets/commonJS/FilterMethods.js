@@ -26,6 +26,18 @@ var FilterMethods =
                         }
                     });
         },
+        //获取农户用户下拉框信息
+        Get_FarmInfo(warmtable,showsign,canalcode,callback){
+            axios.get('/'+warmtable+'/waterprice/getfarmlist',{params:{showsign:showsign,canalcode:canalcode}})
+                    .then(res => {
+                        var data = res.data;
+
+                        if (typeof callback == "function") {
+
+                            callback(data);
+                        }
+                    });
+        },
         // 浮点型数值过滤器
         Float_Filter(Z, figure) {
             if (Z) {
