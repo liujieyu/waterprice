@@ -9,7 +9,7 @@
         </div>
         <Sider hide-trigger style="background-color: '#fff !important';padding: '80px 0 0 0'; overflow: 'scroll;';color:'#333 !important'">
           <!-- 菜单 -->
-          <Menu active-name="1-1" :open-names="['1','1-4']" theme="dark" width="200" accordion="true">
+          <Menu active-name="1-1" :open-names="['1','1-5']" theme="dark" width="200" accordion="true">
               <Submenu name="1">
                   <template slot="title">
                       <Icon type="ios-apps" />
@@ -17,8 +17,8 @@
                   </template>
                       <MenuItem name="1-2" to="/userinfo-show"><Icon type="ios-paper-outline" />用户信息查询</MenuItem>
                       <MenuItem name="1-3" to="/water-recharge"><Icon type="ios-paper-outline" />水费充值</MenuItem>
-                      <MenuItem name="1-4" to="/water-realinfo"><Icon type="ios-paper-outline" />实时用水信息</MenuItem>
-                      <MenuItem name="1-5" to="/water-usageinfo"><Icon type="ios-paper-outline" />水费使用统计</MenuItem>
+                      <MenuItem name="1-4" to="/water-meter"><Icon type="ios-paper-outline" />抄表录入</MenuItem>
+                      <MenuItem name="1-5" to="/water-realinfo"><Icon type="ios-paper-outline" />水费使用统计</MenuItem>
               </Submenu>             
               <Submenu name="2">
                   <template slot="title">

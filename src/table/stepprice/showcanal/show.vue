@@ -21,7 +21,7 @@
                  <Input search enter-button suffix="ios-search" placeholder="请输入用户名" style="width:230px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
                 <COL>
-                   <Select v-model="form.channel" @on-change="search" style="width:120px;margin-right: 15px;" clearable placeholder="所属渠道">
+                   <Select v-model="form.channel" @on-change="search" style="width:160px;margin-right: 15px;" clearable filterable placeholder="所属渠道(可搜索)">
                  <Option v-for="item in channellist" :value="item.value" :key="item.value">{{ item.label }}</Option>
                  </Select>
                 </COL>

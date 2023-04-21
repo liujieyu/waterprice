@@ -16,7 +16,7 @@
           <el-input v-model="form.stnm" placeholder="请输入" style="width:160px"></el-input>
       </el-form-item>
       <el-form-item label="所属渠道：" prop="canalcode" >
-          <el-select ref="selectLabel" v-model="form.canalcode" filterable placeholder="请选择" style="width:160px" @change="getLabel">
+          <el-select ref="selectLabel" v-model="form.canalcode" filterable placeholder="请选择(可搜索)" style="width:160px" @change="getLabel">
             <el-option
             v-for="item in channelist"
             :key="item.value"

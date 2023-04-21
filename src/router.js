@@ -33,6 +33,8 @@ export default new Router({
     { path: '/userinfo-show',component: () => import('./table/wateruser/show/list.vue') },
     //水费充值
     { path: '/water-recharge',component: () => import('./table/recharge/list.vue') },
+    //抄表录入
+    { path: '/water-meter',component: () => import('./table/readmeter/list.vue') },
     //实时用水信息
     { path: '/water-realinfo',component: () => import('./table/realwater/list.vue') },
     //水费使用信息

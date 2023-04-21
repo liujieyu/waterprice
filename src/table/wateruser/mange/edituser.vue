@@ -9,16 +9,17 @@
         label-width="100px"
         style="display: flex;flex-wrap: wrap;"
       >
+<el-alert v-if="info.editsign=='add'" title="新增农户用户时系统将向水表信息表中自动插入一条该用户水表读数为0的初始记录" type="warning" :closable="false"></el-alert>
 <el-tabs value="usertab">
     <el-tab-pane label="农户用户基本信息" name="usertab">
       <el-form-item label="用户编号：" prop="farmcode">
-          <el-input v-model="form.farmcode" placeholder="请输入" style="width:180px"></el-input>
+          <el-input v-model="form.farmcode" placeholder="请输入" style="width:180px" :readonly="info.editsign=='update'"></el-input>
       </el-form-item>
       <el-form-item label="用户名：" prop="farmname">
           <el-input v-model="form.farmname" placeholder="请输入" style="width:180px"></el-input>
       </el-form-item>
       <el-form-item label="所属渠道：" prop="canalcode" >
-          <el-select v-model="form.canalcode" filterable placeholder="请选择" style="width:180px">
+          <el-select v-model="form.canalcode" filterable placeholder="请选择(可搜索)" style="width:180px">
             <el-option
             v-for="item in channelist"
             :key="item.value"
@@ -50,7 +51,7 @@
     </el-tab-pane>
 </el-tabs> 
 <el-form-item>
-    <el-button type="primary" @click="onSubmit" style="margin-right:20px;margin-left:210px;" size="small">保存</el-button>
+    <el-button type="primary" @click="onSubmit" style="margin-right:20px;margin-left:225px;" size="small">保存</el-button>
     <el-button type="info" @click="onCannel" size="small">取消</el-button>
 </el-form-item>      
 </el-form>
