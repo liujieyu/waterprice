@@ -386,8 +386,6 @@ export default {
                 if (valid) { 
                     //新增
                     if(this.addsign){
-                        debugger;
-                        console.log(this.form);
                         this.axios.post('/'+this.$WarmTable+'/waterprice/addwaterprice',this.form).then((res)=>{
                                 if(res.data>0){
                                     this.$message({

@@ -18,7 +18,7 @@
                       <MenuItem name="1-2" to="/userinfo-show"><Icon type="ios-paper-outline" />用户信息查询</MenuItem>
                       <MenuItem name="1-3" to="/water-recharge"><Icon type="ios-paper-outline" />水费充值</MenuItem>
                       <MenuItem name="1-4" to="/water-meter"><Icon type="ios-paper-outline" />抄表录入</MenuItem>
-                      <MenuItem name="1-5" to="/water-realinfo"><Icon type="ios-paper-outline" />水费使用统计</MenuItem>
+                      <MenuItem name="1-5" to="/recharge-query"><Icon type="ios-paper-outline" />充值记录查询</MenuItem>
               </Submenu>             
               <Submenu name="2">
                   <template slot="title">

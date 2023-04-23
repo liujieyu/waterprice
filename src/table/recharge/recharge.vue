@@ -80,7 +80,7 @@
                     <div style="width:730px;margin:0 auto;">
                     <Button  type="primary"  @click="goAdd()" icon="md-fastforward" style="margin-left:300px;margin-top:26px;margin-bottom:12px;" >继续充值</Button>
                     </div>
-                    <div style="width:100%;color:red;">备注：用户购买水量时，不要购买超两级或以上的水量；每年第一次购买水量，不要超量购买！
+                    <div style="width:100%;color:red;">备注：用户购买水量时，不要一次购买超两级或以上的水量；每年第一次购买水量，不要超量购买！
                     </div>
                  </Card>
         </Content>
