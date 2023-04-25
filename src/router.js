@@ -37,6 +37,8 @@ export default new Router({
     { path: '/water-meter',component: () => import('./table/readmeter/list.vue') },
     //充值记录查询
     { path: '/recharge-query',component: () => import('./table/showcharge/list.vue') },
+    //收费通知查询
+    { path: '/meter-notice',component: () => import('./table/showmeter/list.vue') },
     //实时用水信息
     { path: '/water-realinfo',component: () => import('./table/realwater/list.vue') },
     //水费使用信息
@@ -49,6 +51,8 @@ export default new Router({
     { path: '/water-dayanalysis',component: () => import('./table/channelwater/daywater/list.vue') },
     //月水量监测
     { path: '/water-monthanalysis',component: () => import('./table/channelwater/monthwater/list.vue') },
+    //水费收缴统计
+    { path: '/recharge-statis',component: () => import('./table/waterusage/list.vue') },
   ],},    
   ] 
 })

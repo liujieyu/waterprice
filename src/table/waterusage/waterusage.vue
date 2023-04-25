@@ -5,34 +5,28 @@
                 <COL>
                  <el-date-picker
                     class="wAh"
-                    size="mini"
-                    style="width:100px;"
-                    v-model="wateryear"
+                    size="small"
+                    style="width:120px;margin-left:10px;margin-right: 15px;"
+                    :clearable="false"
+                    v-model="form.wateryear"
                     type="year"
-                    @change="timechange"
+                    @change="search"
+                    :picker-options="pickerOptions"
                     placeholder="选择年">
                  </el-date-picker>
                 </COL>
                 <COL>
-                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
+                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名" style="width:200px;margin-right: 15px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
                 <COL>
-                  <Select v-model="form.usertype" @on-change="search" style="width:100px;margin-right: 15px;" clearable placeholder="用户类型">
-                 <Option v-for="item in typelist" :value="item.value" :key="item.value">{{ item.label }}</Option>
-                 </Select>
-                </COL>
-                <COL>
-                   <Select v-model="form.channel" @on-change="search" style="width:100px;margin-right: 15px;" clearable placeholder="所属渠道">
+                   <Select v-model="form.channel" @on-change="search" style="width:160px;margin-right: 15px;" clearable placeholder="所属渠道">
                  <Option v-for="item in channellist" :value="item.value" :key="item.value">{{ item.label }}</Option>
                  </Select>
-                </COL>
-                <COL>
-                <Button type="primary" style="width:auto;" @click="exportData">导出</Button>
-                </COL>            
+                </COL>          
             </Row>
             <Row>
                 <Col style='font-size: 14px;margin-top:10px;' class="borsLine">
-                累计购买金额：456340元&nbsp;&nbsp;&nbsp;&nbsp;累计购买水量：89675m³ 其中：一级水量：62675m³ 二级水量：23000m³ 三级水量：0m³&nbsp;&nbsp;&nbsp;&nbsp;累计已用水量：81354m³  其中：一级水量：62675m³ 二级水量：18679m³ 三级水量：0m³
+                累计收缴金额：{{suminfo.amount}}元&nbsp;&nbsp;&nbsp;&nbsp;累计购买水量：{{suminfo.buywater}}m³&nbsp;&nbsp;&nbsp;&nbsp;其中&nbsp;&nbsp;基础水量：{{suminfo.basewater}}m³&nbsp;&nbsp;一级水量：{{suminfo.buyfirst}}m³&nbsp;&nbsp;二级水量：{{suminfo.buysecond}}m³&nbsp;&nbsp;三级水量：{{suminfo.buythird}}m³
                 </Col>
             </Row>
             <el-table
@@ -41,6 +35,7 @@
                 :height="theight"
                 v-loading="loading"
                 style="width: 100%"
+                @sort-change="sort_change"
                 >
                 <el-table-column
                 v-for="(item,index) in tablecolumns"
@@ -49,7 +44,7 @@
                 :label="item.title"
                 :min-width="item.width"
                 :fixed="item.fixed"
-                :sortable="item.sortable"
+                :sortable="item.sortable"               
                 ></el-table-column>
             </el-table>
             <div style="margin:10px 10px 0px 10px;overflow: hidden">
@@ -70,14 +65,17 @@
     </div>
 </template>
 <script type="text/javascript">
-import USEREDIT from "@/table/wateruser/mange/edituser.vue";
+import FilterMethods from "@/assets/commonJS/FilterMethods.js";
 export default {
         data(){
             return{
-                subwidth:window.innerWidth-616-200-24-160,
                 loading:false,
-                theight:window.innerHeight-270,
-                wateryear:'2023',
+                theight:window.innerHeight-265,
+                pickerOptions: {
+                    disabledDate(v) {
+                    return v.getTime() < new Date(2021,0,1,0,0,0);
+                    }
+                },
                 // 表头设置
             tablecolumns: [
               {
@@ -89,77 +87,69 @@ export default {
               },
               {
                 title: "用户名",
-                key: "username",
-                width: 100,
+                key: "farmname",
+                width: 130,
                 align: "center",
                 sortable: "custom",
-              },
-              {
-                title: "用户类型",
-                key: "usertype",
-                width: 100,
-                align: "center",
-                sortable: "custom",
-              },   
-              {
-                title: "所属渠道",
-                key: "channel",
-                width: 120,
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "购买日期",
-                width: 110,
-                key: "buydate",
-                align: "center",
-                sortable: "custom",
-              },  
+              },                 
               {
                 title: "购买金额(元)",
-                width: 120,
+                width: 130,
                 key: "amount",
                 align: "center",
                 sortable: "custom",
               },                 
               {
                 title: "购买水量(m³)",
-                width: 140,
-                key: "purchase",
+                width: 130,
+                key: "buywater",
+                align: "center",
+                sortable: "custom",
+              },
+              {
+                title: "基础水量(m³)",
+                width: 130,
+                key: "basewater",
+                align: "center",
+                sortable: "custom",
+              },
+              {
+                title: "一级水量(m³)",
+                width: 130,
+                key: "buyfirst",
+                align: "center",
+                sortable: "custom",
+              },
+              {
+                title: "二级水量(m³)",
+                width: 130,
+                key: "buysecond",
+                align: "center",
+                sortable: "custom",
+              },
+              {
+                title: "三级水量(m³)",
+                width: 130,
+                key: "buythird",
                 align: "center",
                 sortable: "custom",
               },   
               {
-                title: "余额(元)",
-                width: 100,
-                key: "remainsum",
+                title: "承包面积(亩)",
+                key: "area",
+                width: 130,
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "用完时间",
-                width: 100,
-                key: "useup",
+                title: "所属渠道",
+                key: "canalname",
+                width: 130,
                 align: "center",
                 sortable: "custom",
               },           
-              {
-                title: "已用水量(m³)",
-                width: 120,
-                key: "usedwater",
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "存余水量(m³)",
-                width: 120,
-                key: "remainwater",
-                align: "center",
-                sortable: "custom",
-              },             
             ],                
-            data:[{index:1,cardnum:'154356722',username:'跃进水协会',usertype:'水协会',channel:'跃进干渠',purchase:1243,lastwater:12.21,usedwater:665.78,remainwater:589.43,buydate:'2023-03-11',amount:3000,remainsum:1568.75,useup:'--'},
-                  {index:2,cardnum:'154612447',username:'五溪水协会',usertype:'水协会',channel:'五溪干渠',purchase:2157,lastwater:35.89,usedwater:2182.12,remainwater:10.77,buydate:'2022-12-01',amount:1600,remainsum:146.21,useup:'--'}],
+            data:[],
             list_input:{
                 total:65,
                 pagesize:20,
@@ -168,29 +158,103 @@ export default {
             },
             form:{
                 searchmsg:'',
-                usertype:'',
-                xzqh:'',
                 channel:'',
-                wateryeild:'',
+                date:[],
+                orderBy:'PX',       
+                sequence:'asc',
+                showsign:'', 
+                wateryear:'',
             },   
-            typelist:[],
-            xzqhlist:[],
+            suminfo:{
+                amount:'',
+                buywater:'',
+                basewater:'',
+                buyfirst:'',
+                buysecond:'',
+                buythird:'',
+            },
             channellist:[],
             }
         },
-        mixins: [],
+        mixins: [FilterMethods],
         components: {
-           USEREDIT
         },
         mounted(){
-
+          this.form.showsign=this.Cook.get("usertype");
+          const nowdate=new Date();
+          this.form.wateryear=nowdate;
+          this.$FilterData.Get_CanalInfo(this.$WarmTable,this.form.showsign,data => {
+                    this.channellist = data;
+          });
+          this.Reload();
         },
         methods:{
-            timechange(date){
+          PagesizeChange(pagesize){
+              this.list_input.pagesize=pagesize;
+              this.list_input.current=1;
+              this.Reload();
+            },
+            CurrentChange(index){
+                this.list_input.current=index;
+                this.Reload();
+            }, 
+            sort_change(item){
+              if(item.order==null){
+                    return;
+                }
+                if(item.order=="ascending"){
+                    this.form.sequence="asc";
+                }else{
+                    this.form.sequence="desc";
+                }
+                if(item.prop=="canalname"){
+                  this.form.orderBy="PX";
+                }else{
+                  this.form.orderBy=item.prop.toUpperCase();
+                }   
+                this.list_input.current=1;          
+                this.Reload();
+            },
+            search(){
             this.Reload();
             },
             Reload(){
-                
+              debugger;
+                 this.loading=true;
+                var paramobj=new Object();
+                if(this.form.searchmsg!=null && this.form.searchmsg!=''){
+                  paramobj.stnm=this.form.searchmsg;
+                }
+                if(this.form.channel!=null && this.form.channel!=''){
+                  paramobj.canalcode=this.form.channel;
+                }
+                if(this.form.wateryear!=null && this.form.wateryear!=''){
+                  paramobj.year=this.form.wateryear.getFullYear();
+                }
+                var _currentPage = this.list_input.current;
+                var _pageSizes = this.list_input.pagesize;
+                var _bgincount=(_currentPage - 1) * _pageSizes+1;
+                var _endcount=_currentPage * _pageSizes;
+                paramobj.begincount=_bgincount;
+                paramobj.endcount=_endcount;
+                paramobj.orderBy=this.form.orderBy;
+                paramobj.sequence=this.form.sequence;
+                paramobj.showsign=this.form.showsign;
+                this.axios.get('/'+this.$WarmTable+'/waterprice/getrechargetj',{params:paramobj}).then(res => {
+                      this.loading=false; 
+                      this.data=res.data.rows;
+                      this.list_input.total=res.data.total; 
+                      if(res.data.rechargesum!=null){
+                        this.suminfo=res.data.rechargesum;
+                      }else{
+                        this.suminfo.amount=0;
+                        this.suminfo.buywater=0;
+                        this.suminfo.basewater=0;
+                        this.suminfo.buyfirst=0;
+                        this.suminfo.buysecond=0;
+                        this.suminfo.buythird=0;
+                      }                                            
+                  });
             },
         }
 }

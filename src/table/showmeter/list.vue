@@ -1,15 +1,15 @@
 <template>
 	<div style="overflow:hidden;">
 		<Breadcrumb :style="{margin: '10px'}">
-            <BreadcrumbItem>超额用水加价</BreadcrumbItem>
-            <BreadcrumbItem>水费收缴信息</BreadcrumbItem>
+            <BreadcrumbItem>智慧水价</BreadcrumbItem>
+            <BreadcrumbItem>收费通知</BreadcrumbItem>
         </Breadcrumb>
-		<WATERUSAGE></WATERUSAGE>
+		<METERSHOW></METERSHOW>
 	</div>
 </template>
 
 <script type="text/javascript">
-  import WATERUSAGE from '@/table/waterusage/waterusage.vue';
+  import METERSHOW from '@/table/showmeter/show.vue';
 	export default {
         data() {
         return { };
@@ -19,7 +19,7 @@
       methods: { },
       computed: { },
       components: { 
-      WATERUSAGE,       
+      METERSHOW,       
       }
     }
 </script>

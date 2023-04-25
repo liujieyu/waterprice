@@ -9,31 +9,31 @@
         </div>
         <Sider hide-trigger style="background-color: '#fff !important';padding: '80px 0 0 0'; overflow: 'scroll;';color:'#333 !important'">
           <!-- 菜单 -->
-          <Menu active-name="1-1" :open-names="['1','1-5']" theme="dark" width="200" accordion="true">
+          <Menu active-name="1-1" :open-names="['1','1-1']" theme="dark" width="200" accordion="true">
               <Submenu name="1">
                   <template slot="title">
                       <Icon type="ios-apps" />
                       智慧水价
                   </template>
-                      <MenuItem name="1-2" to="/userinfo-show"><Icon type="ios-paper-outline" />用户信息查询</MenuItem>
-                      <MenuItem name="1-3" to="/water-recharge"><Icon type="ios-paper-outline" />水费充值</MenuItem>
-                      <MenuItem name="1-4" to="/water-meter"><Icon type="ios-paper-outline" />抄表录入</MenuItem>
-                      <MenuItem name="1-5" to="/recharge-query"><Icon type="ios-paper-outline" />充值记录查询</MenuItem>
+                      <MenuItem name="1-1" to="/meter-notice"><Icon type="ios-paper-outline" />收费通知</MenuItem>
+                      <MenuItem name="1-2" to="/water-recharge"><Icon type="ios-paper-outline" />水费充值</MenuItem>
+                      <MenuItem name="1-3" to="/water-meter"><Icon type="ios-paper-outline" />抄表录入</MenuItem>
+                      <MenuItem name="1-4" to="/recharge-query"><Icon type="ios-paper-outline" />充值记录查询</MenuItem>
               </Submenu>             
               <Submenu name="2">
                   <template slot="title">
                       <Icon type="ios-apps" />
                       超额用水加价
                   </template>
-                  <MenuItem name="2-1" to="/canal-overwater"><Icon type="ios-paper-outline" />支渠用户超水信息</MenuItem>
-                  <MenuItem name="2-2" to="/canaluser-manage"><Icon type="ios-paper-outline" />农户用户超水信息</MenuItem>
-                  <Submenu name="2-3">
+                  <MenuItem name="2-1" to="/recharge-statis"><Icon type="ios-paper-outline" />水费收缴信息</MenuItem>
+                  <MenuItem name="2-3" to="/canal-overwater"><Icon type="ios-paper-outline" />支渠用户超水信息</MenuItem>
+                  <Submenu name="2-4">
                     <template slot="title">
                       <Icon type="logo-buffer" />
                       执行水价标准
                     </template>
-                      <MenuItem name="2-3-1" to="/stepprice-showcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
-                      <MenuItem name="2-3-2" to="/stepprice-showfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
+                      <MenuItem name="2-4-1" to="/stepprice-showcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
+                      <MenuItem name="2-4-2" to="/stepprice-showfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
                   </Submenu>                 
               </Submenu>
               <Submenu name="3">
@@ -90,7 +90,7 @@ export default {
     };
   },
   mounted() { 
-    this.$router.push({path: '/water-realinfo'}); 
+    this.$router.push({path: '/meter-notice'}); 
     this.Menu_toggle();
   },
   methods: {

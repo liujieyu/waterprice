@@ -4,7 +4,7 @@
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
                 <COL>
                 <el-date-picker
-                    style="width:120px;margin-right: 15px;"
+                    style="width:120px;margin-right: 15px;margin-left:10px;"
                     v-model="datecon"
                     :clearable="false"
                     type="year"
@@ -15,7 +15,7 @@
                  </el-date-picker>
                 </COL>
                 <COL>
-                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
+                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名" style="width:200px;margin-right: 15px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
                 <COL>
                    <Select v-model="form.channel" @on-change="search" style="width:160px;margin-right: 15px;" clearable filterable placeholder="所属渠道(可搜索)">

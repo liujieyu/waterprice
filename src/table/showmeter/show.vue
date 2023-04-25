@@ -3,13 +3,19 @@
 		<Content class="searchcon">
             <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;">                
                 <COL>
-                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名" style="width:200px;margin-right: 15px;margin-left:10px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
+                 <Input search enter-button suffix="ios-search" placeholder="请输入用户名" style="width:200px;margin-left:10px;margin-right: 15px;margin-top:-2px;" @on-search="search" v-model="form.searchmsg" />
                 </COL>
                 <COL>
                    <Select v-model="form.channel" @on-change="search" style="width:160px;margin-right: 15px;" clearable filterable placeholder="所属渠道(可搜索)">
                  <Option v-for="item in channellist" :value="item.value" :key="item.value">{{ item.label }}</Option>
                  </Select>
-                </COL>   
+                </COL>
+                <COL>
+                   <Select v-model="form.arrear" @on-change="search" style="width:100px;margin-right: 15px;" clearable placeholder="是否欠费">
+                    <Option value="1" key="1">已欠费</Option>
+                    <Option value="2" key="2">已缴费</Option>
+                   </Select>
+                </COL>
                 <COL>
                  <el-date-picker
                       v-model="form.date"
@@ -23,7 +29,18 @@
                       format="yyyy-MM-dd"
                       style="margin-right:15px;"
                     ></el-date-picker>
-                </COL>            
+                </COL>               
+                <COL>
+                 <div :style="{width:subwidth+'px'}"></div>
+                </COL>
+                <COL>
+                <div style="display: flex;flex-wrap:wrap;font-size:14px;margin-top:10px;">
+                  <img src="@/assets/image/red.png" style="margin-right:5px;width:20px;height:20px;">
+                  <span style="padding:1px;">已欠费</span>
+                  <img src="@/assets/image/green.png" style="margin-left:10px;margin-right:5px;width:20px;height:20px;">
+                  <span style="padding:1px;">已缴费</span>
+                </div>
+                </COL>               
             </Row>
             <Row  class="fgline"></Row>
             <el-table
@@ -34,6 +51,18 @@
                 @sort-change="sort_change"
                 style="width: 100%"
                 >
+                <el-table-column
+                    fixed="left"
+                    label="序号"
+                    prop="index"
+                    align="center"
+                    width="55">
+                </el-table-column>
+                <el-table-column align="center" label="提醒" width="55" fixed="left">
+                  <template slot-scope="scope">
+                            <img :src="scope.row.txsign==1?require('@/assets/image/red.png'):require('@/assets/image/green.png')" style="width: 28px;height: 28px;"/>
+                        </template>
+                </el-table-column>
                 <el-table-column
                 v-for="(item,index) in tablecolumns"
                 :prop="item.key"
@@ -67,16 +96,10 @@ export default {
         data(){
             return{
                 theight:window.innerHeight-240,
+                subwidth:window.innerWidth-845-200-24-195,
                 loading:false,
                 // 表头设置
             tablecolumns: [
-            {
-                title: "序号",
-                key: "index",
-                width: 55,
-                align: "center",
-                fixed: "left",
-              }, 
               {
                 title: "用户名",
                 key: "farmname",
@@ -84,68 +107,96 @@ export default {
                 align: "center",
                 sortable: "custom",
                 fixed: "left",
-              }, 
+              },              
               {
-                title: "购买金额(元)",
-                key: "amount",
+                title: "水费(元)",
+                key: "waterrate",
                 width: 130,
                 align: "center",     
                 sortable: "custom", 
                 fixed: "left",         
-              },   
+              },    
               {
-                title: "购买时间",
+                title: "读表时间",
                 width: 160,
-                key: "createtime",
+                key: "readtime",
                 align: "center",
                 sortable: "custom",
-              },                                    
+              },         
               {
-                title: "购买水量(m³)",
+                title: "水表读数",
+                width: 120,
+                key: "waternum",
+                align: "center",
+                sortable: "custom",
+              }, 
+              {
+                title: "上期读数",
+                width: 120,
+                key: "lastnum",
+                align: "center",
+                sortable: "custom",
+              },             
+              {
+                title: "水量(m³)",
                 width: 130,
-                key: "buywater",
+                key: "wateryield",
                 align: "center",
                 sortable: "custom",
               },
               {
                 title: "基础水量(m³)",
                 width: 130,
-                key: "basewater",
+                key: "yieldbase",
                 align: "center",
                 sortable: "custom",
               },
               {
                 title: "一级水量(m³)",
                 width: 130,
-                key: "buyfirst",
+                key: "yieldfirst",
                 align: "center",
                 sortable: "custom",
               },
               {
                 title: "二级水量(m³)",
                 width: 130,
-                key: "buysecond",
+                key: "yieldsecond",
                 align: "center",
                 sortable: "custom",
               },
               {
                 title: "三级水量(m³)",
                 width: 130,
-                key: "buythird",
+                key: "yieldthird",
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "上期结余(m³)",
+                title: "可用余额(元)",
                 width: 130,
-                key: "lastsurplus",
+                key: "available",
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "存余水量(m³)",
-                width: 130,
-                key: "remainwater",
+                title: "缴费时间(m³)",
+                width: 160,
+                key: "paytime",
+                align: "center",
+                sortable: "custom",
+              },
+              {
+                title: "联系人",
+                width: 120,
+                key: "contacts",
+                align: "center",
+                sortable: "custom",
+              },
+              {
+                title: "联系电话",
+                width: 120,
+                key: "conphone",
                 align: "center",
                 sortable: "custom",
               },
@@ -175,9 +226,10 @@ export default {
                 searchmsg:'',
                 channel:'',
                 date:[],
-                orderBy:'CREATETIME',       
+                orderBy:'READTIME',       
                 sequence:'desc',
                 showsign:'', 
+                arrear:0,
             }, 
             channellist:[],              
             }
@@ -198,7 +250,16 @@ export default {
 
           function zeroPointOfTheDay() {
             var date = new Date();
-            date.setMonth(0);
+            var nowMonth=date.getMonth()+1;
+            if(nowMonth<4){
+                date.setMonth(0);
+            }else if(nowMonth<7){
+                date.setMonth(3);
+            }else if(nowMonth<11){
+                date.setMonth(6);
+            }else{
+                date.setMonth(10);
+            }           
             date.setDate(1);
             return date;
           }
@@ -260,11 +321,22 @@ export default {
                 paramobj.orderBy=this.form.orderBy;
                 paramobj.sequence=this.form.sequence;
                 paramobj.showsign=this.form.showsign;
-                this.axios.get('/'+this.$WarmTable+'/waterprice/getrechargeshow',{params:paramobj}).then(res => {
+                paramobj.arrear=this.form.arrear;
+                this.axios.get('/'+this.$WarmTable+'/waterprice/getmetershow',{params:paramobj}).then(res => {
                       this.loading=false; 
                       var datalist=res.data.rows;
                       this.data=datalist.map((val, index) => {
-                      val.createtime=val.createtime.substring(0,16);
+                      val.readtime=val.readtime.substring(0,16);
+                      val.waterrate=parseFloat(val.waterrate).toFixed(2);
+                      val.available=parseFloat(val.available).toFixed(2);
+                      if(val.paytime!=null && val.paytime!=''){
+                        val.paytime=val.paytime.substring(0,16);
+                      }
+                      if(val.available<0 && (val.paytime==null || val.paytime=='')){
+                        val.txsign=1;
+                      }else{
+                        val.txsign=2;
+                      }
                       return val;
                     }); 
                     this.list_input.total=res.data.total;                                
