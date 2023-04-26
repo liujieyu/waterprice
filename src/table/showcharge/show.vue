@@ -108,7 +108,7 @@ export default {
                 sortable: "custom",
               },
               {
-                title: "基础水量(m³)",
+                title: "基础水权(m³)",
                 width: 130,
                 key: "basewater",
                 align: "center",

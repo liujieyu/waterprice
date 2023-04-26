@@ -1,7 +1,22 @@
 <template>
 	<div>
-		<Content class="searchcon">
-            <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
+		<Content class="searchcon">           
+            <el-table
+                :data="headdata"
+                border
+                v-loading="headloading"
+                style="width: 100%;margin-top:8px;margin-bottom:8px;"
+                >
+                <el-table-column
+                v-for="(item,index) in headcolumns"
+                :prop="item.key"
+                :align="item.align"
+                :label="item.title"
+                :min-width="item.width"
+                ></el-table-column>
+            </el-table>
+            <Divider style="margin-top:12px;"/>
+            <Row type="flex" :gutter="16" class="rowtocol" style="padding-bottom:12px;"> 
                 <COL>
                  <el-date-picker
                     class="wAh"
@@ -22,13 +37,23 @@
                    <Select v-model="form.channel" @on-change="search" style="width:160px;margin-right: 15px;" clearable placeholder="所属渠道">
                  <Option v-for="item in channellist" :value="item.value" :key="item.value">{{ item.label }}</Option>
                  </Select>
-                </COL>          
-            </Row>
-            <Row>
-                <Col style='font-size: 14px;margin-top:10px;' class="borsLine">
-                累计收缴金额：{{suminfo.amount}}元&nbsp;&nbsp;&nbsp;&nbsp;累计购买水量：{{suminfo.buywater}}m³&nbsp;&nbsp;&nbsp;&nbsp;其中&nbsp;&nbsp;基础水权：{{suminfo.basewater}}m³&nbsp;&nbsp;一级水量：{{suminfo.buyfirst}}m³&nbsp;&nbsp;二级水量：{{suminfo.buysecond}}m³&nbsp;&nbsp;三级水量：{{suminfo.buythird}}m³
-                </Col>
-            </Row>
+                </COL>  
+                <COL>
+                    <div :style="{width:subwidth+'px'}"></div>
+                   </COL>
+                   <COL>
+                   <div style="display: flex;flex-wrap:wrap;font-size:14px;margin-top:10px;">
+                    <img src="@/assets/image/blue.png" style="margin-right:5px;width:20px;height:20px;">
+                    <span style="padding:1px;">未节水</span>
+                    <img src="@/assets/image/greenone.png" style="margin-left:10px;margin-right:5px;width:20px;height:20px;">
+                    <span style="padding:1px;">一级节水</span>
+                    <img src="@/assets/image/greentwo.png" style="margin-left:10px;margin-right:5px;width:20px;height:20px;">
+                    <span style="padding:1px;">二级节水</span>
+                    <img src="@/assets/image/green.png" style="margin-left:10px;margin-right:5px;width:20px;height:20px;">
+                    <span style="padding:1px;">三级节水</span>
+                   </div>
+                   </COL>        
+            </Row>           
             <el-table
                 :data="data"
                 border
@@ -37,6 +62,18 @@
                 style="width: 100%"
                 @sort-change="sort_change"
                 >
+                <el-table-column
+                    fixed="left"
+                    label="序号"
+                    prop="index"
+                    align="center"
+                    width="55">
+                </el-table-column>
+                <el-table-column align="center" label="奖励" width="55" fixed="left">
+                  <template slot-scope="scope">
+                        <img :src="scope.row.thridwater>0?require('@/assets/image/green.png'):scope.row.twowater>0?require('@/assets/image/greentwo.png'):scope.row.onewater>0?require('@/assets/image/greenone.png'):require('@/assets/image/blue.png')" style="width: 28px;height: 28px;vertical-align:middle;"/>
+                  </template>
+                </el-table-column>
                 <el-table-column
                 v-for="(item,index) in tablecolumns"
                 :prop="item.key"
@@ -70,67 +107,124 @@ export default {
         data(){
             return{
                 loading:false,
-                theight:window.innerHeight-265,
+                headloading:false,
+                theight:window.innerHeight-305,
+                subwidth:window.innerWidth-616-200-24-290,
                 pickerOptions: {
                     disabledDate(v) {
                     return v.getTime() < new Date(2021,0,1,0,0,0);
                     }
                 },
+            headcolumns:[
+              {
+                title: "累计回购金额",
+                key: "backamount",
+                width: 140,
+                align: "center",
+              },
+              {
+                title: "累计使用水量",
+                key: "wateryield",
+                width: 140,
+                align: "center",
+              },
+            //   {
+            //     title: "累计基础水权",
+            //     key: "realbase",
+            //     width: 130,
+            //     align: "center",
+            //   },
+              {
+                title: "累计总节水量",
+                key: "totalwater",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "累计一级节水量",
+                key: "onewater",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "累计二级节水量",
+                key: "twowater",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "累计三级节水量",
+                key: "thridwater",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "承包面积",
+                key: "area",
+                width: 130,
+                align: "center",
+              },
+            ],
                 // 表头设置
             tablecolumns: [
-              {
-                title: "序号",
-                key: "index",
-                width: 55,
-                align: "center",
-                fixed: "left"
-              },
               {
                 title: "用户名",
                 key: "farmname",
                 width: 130,
                 align: "center",
                 sortable: "custom",
+                fixed:"left",
               },                 
               {
-                title: "购买金额(元)",
+                title: "回购金额(元)",
                 width: 130,
-                key: "amount",
+                key: "backamount",
                 align: "center",
                 sortable: "custom",
+                fixed:"left",
               },                 
               {
-                title: "购买水量(m³)",
+                title: "使用水量(m³)",
                 width: 130,
-                key: "buywater",
+                key: "wateryield",
+                align: "center",
+                sortable: "custom",
+                fixed:"left",
+              },
+            //   {
+            //     title: "基础水权(m³)",
+            //     width: 130,
+            //     key: "realbase",
+            //     align: "center",
+            //     sortable: "custom",
+            //     fixed:"left",
+            //   },
+              {
+                title: "总节水量(m³)",
+                width: 130,
+                key: "totalwater",
+                align: "center",
+                sortable: "custom",
+                fixed:"left",
+              },
+              {
+                title: "一级节水量(m³)",
+                width: 145,
+                key: "onewater",
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "基础水权(m³)",
-                width: 130,
-                key: "basewater",
+                title: "二级节水量(m³)",
+                width: 145,
+                key: "twowater",
                 align: "center",
                 sortable: "custom",
               },
               {
-                title: "一级水量(m³)",
-                width: 130,
-                key: "buyfirst",
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "二级水量(m³)",
-                width: 130,
-                key: "buysecond",
-                align: "center",
-                sortable: "custom",
-              },
-              {
-                title: "三级水量(m³)",
-                width: 130,
-                key: "buythird",
+                title: "三级节水量(m³)",
+                width: 145,
+                key: "thridwater",
                 align: "center",
                 sortable: "custom",
               },   
@@ -148,7 +242,8 @@ export default {
                 align: "center",
                 sortable: "custom",
               },           
-            ],                
+            ], 
+            headdata:[],               
             data:[],
             list_input:{
                 total:65,
@@ -166,12 +261,6 @@ export default {
                 wateryear:'',
             },   
             suminfo:{
-                amount:'',
-                buywater:'',
-                basewater:'',
-                buyfirst:'',
-                buysecond:'',
-                buythird:'',
             },
             channellist:[],
             }
@@ -186,17 +275,17 @@ export default {
           this.$FilterData.Get_CanalInfo(this.$WarmTable,this.form.showsign,data => {
                     this.channellist = data;
           });
-          this.Reload();
+          this.Reload(true);
         },
         methods:{
           PagesizeChange(pagesize){
               this.list_input.pagesize=pagesize;
               this.list_input.current=1;
-              this.Reload();
+              this.Reload(false);
             },
             CurrentChange(index){
                 this.list_input.current=index;
-                this.Reload();
+                this.Reload(false);
             }, 
             sort_change(item){
               if(item.order==null){
@@ -213,13 +302,14 @@ export default {
                   this.form.orderBy=item.prop.toUpperCase();
                 }   
                 this.list_input.current=1;          
-                this.Reload();
+                this.Reload(false);
             },
             search(){
-            this.Reload();
+            this.Reload(true);
             },
-            Reload(){
+            Reload(sumsign){
                  this.loading=true;
+                 this.headloading=true;
                 var paramobj=new Object();
                 if(this.form.searchmsg!=null && this.form.searchmsg!=''){
                   paramobj.stnm=this.form.searchmsg;
@@ -229,6 +319,7 @@ export default {
                 }
                 if(this.form.wateryear!=null && this.form.wateryear!=''){
                   paramobj.year=this.form.wateryear.getFullYear();
+                  paramobj.nextyear=paramobj.year+1;
                 }
                 var _currentPage = this.list_input.current;
                 var _pageSizes = this.list_input.pagesize;
@@ -239,20 +330,40 @@ export default {
                 paramobj.orderBy=this.form.orderBy;
                 paramobj.sequence=this.form.sequence;
                 paramobj.showsign=this.form.showsign;
-                this.axios.get('/'+this.$WarmTable+'/waterprice/getrechargetj',{params:paramobj}).then(res => {
+                paramobj.issum=sumsign;
+                this.axios.get('/'+this.$WarmTable+'/waterprice/gemeterback',{params:paramobj}).then(res => {
                       this.loading=false; 
-                      this.data=res.data.rows;
+                      this.headloading=false;
+                      var datalist=res.data.rows;
+                      this.data=datalist.map((val, index) => {
+                        val.backamount=parseFloat(val.backamount).toFixed(2);
+                        return val;
+                        }); 
                       this.list_input.total=res.data.total; 
-                      if(res.data.rechargesum!=null){
-                        this.suminfo=res.data.rechargesum;
+                    if(sumsign){
+                      if(res.data.backsum!=null && res.data.backsum.backamount!=null){
+                        this.suminfo=res.data.backsum;                       
                       }else{
-                        this.suminfo.amount=0;
-                        this.suminfo.buywater=0;
-                        this.suminfo.basewater=0;
-                        this.suminfo.buyfirst=0;
-                        this.suminfo.buysecond=0;
-                        this.suminfo.buythird=0;
-                      }                                            
+                        this.suminfo.backamount=0;
+                        this.suminfo.wateryield=0;
+                        this.suminfo.realbase=0;
+                        this.suminfo.totalwater=0;
+                        this.suminfo.onewater=0;
+                        this.suminfo.twowater=0;
+                        this.suminfo.thridwater=0;
+                        this.suminfo.area=0;
+                      } 
+                      this.suminfo.backamount=parseFloat(this.suminfo.backamount).toFixed(2)+'元';
+                      this.suminfo.wateryield+='m³';
+                      this.suminfo.realbase+='m³';
+                      this.suminfo.totalwater+='m³';
+                      this.suminfo.onewater+='m³';
+                      this.suminfo.twowater+='m³';
+                      this.suminfo.thridwater+='m³';
+                      this.suminfo.area+='亩';
+                      this.headdata=[];
+                      this.headdata.push(this.suminfo);  
+                      }                                         
                   });
             },
         }

@@ -66,7 +66,7 @@
                             <tr>                                
                                 <td class="head">水量：</td>
                                 <td class="content">{{info.wateryield}}</td>
-                                <td class="head">其中 基础水量：</td>
+                                <td class="head">其中 基础水权：</td>
                                 <td class="content">{{info.yieldbase}}</td>                                
                                 <td class="head">一级水量：</td>
                                 <td class="content">{{info.yieldfirst}}</td>

@@ -26,14 +26,15 @@
                       超额用水加价
                   </template>
                   <MenuItem name="2-1" to="/recharge-statis"><Icon type="ios-paper-outline" />水费收缴信息</MenuItem>
+                  <MenuItem name="2-2" to="/meter-statis"><Icon type="ios-paper-outline" />农户用户超水信息</MenuItem>
                   <MenuItem name="2-3" to="/canal-overwater"><Icon type="ios-paper-outline" />支渠用户超水信息</MenuItem>
                   <Submenu name="2-4">
                     <template slot="title">
                       <Icon type="logo-buffer" />
                       执行水价标准
                     </template>
-                      <MenuItem name="2-4-1" to="/stepprice-showcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
-                      <MenuItem name="2-4-2" to="/stepprice-showfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
+                      <MenuItem name="2-4-1" to="/stepprice-showfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
+                      <MenuItem name="2-4-2" to="/stepprice-showcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
                   </Submenu>                 
               </Submenu>
               <Submenu name="3">
@@ -41,15 +42,15 @@
                       <Icon type="ios-apps" />
                       节约用水回购
                   </template>
-                  <MenuItem name="3-1" to="/canal-backwater"><Icon type="ios-paper-outline" />支渠用户节水信息</MenuItem>
-                  <MenuItem name="3-2" to="/canaluser-manage"><Icon type="ios-paper-outline" />农户用户节水信息</MenuItem>
+                  <MenuItem name="3-1" to="/meter-backinfo"><Icon type="ios-paper-outline" />农户用户节水信息</MenuItem>
+                  <MenuItem name="3-2" to="/canal-backwater"><Icon type="ios-paper-outline" />支渠用户节水信息</MenuItem>                 
                   <Submenu name="3-3">
                     <template slot="title">
                       <Icon type="logo-buffer" />
                       执行水价标准
                     </template>
-                      <MenuItem name="3-3-1" to="/stepprice-backcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
-                      <MenuItem name="3-3-2" to="/stepprice-backfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
+                      <MenuItem name="3-3-1" to="/stepprice-backfarm"><Icon type="ios-paper-outline" />农户用户标准</MenuItem>
+                      <MenuItem name="3-3-2" to="/stepprice-backcanal"><Icon type="ios-paper-outline" />支渠用户标准</MenuItem>
                   </Submenu> 
               </Submenu>
               <Submenu name="4">

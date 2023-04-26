@@ -1,7 +1,22 @@
 <template>
 	<div>
 		<Content class="searchcon">
-            <Row type="flex" :gutter="16" class="rowtocol" style="padding-top:10px;"> 
+           <el-table
+                :data="headdata"
+                border
+                v-loading="headloading"
+                style="width: 100%;margin-top:8px;margin-bottom:8px;"
+                >
+                <el-table-column
+                v-for="(item,index) in headcolumns"
+                :prop="item.key"
+                :align="item.align"
+                :label="item.title"
+                :min-width="item.width"
+                ></el-table-column>
+            </el-table>
+            <Divider style="margin-top:12px;"/>
+            <Row type="flex" :gutter="16" class="rowtocol" style="padding-bottom:12px;"> 
                 <COL>
                 <el-date-picker
                     style="width:120px;margin-right: 15px;margin-left:10px;"
@@ -38,14 +53,12 @@
                 </div>
                 </COL>
             </Row>
-            <Row class="fgline"></Row>
             <el-table
                 :data="data"
                 border
                 :height="theight"
                 v-loading="loading"
                 @sort-change="sort_change"
-                show-summary
                 style="width: 100%"
                 >
                 <el-table-column
@@ -79,15 +92,60 @@ import FilterMethods from "@/assets/commonJS/FilterMethods.js";
 export default {
         data(){
             return{
-                theight:window.innerHeight-200,
+                theight:window.innerHeight-270,
                 subwidth:window.innerWidth-616-200-24-290,
                 loading:false,
+                headloading:false,
                 datecon:'',
                 pickerOptions: {
                     disabledDate(v) {
                     return v.getTime() < new Date(2021,0,1,0,0,0);
                     }
                 },
+            headcolumns:[
+              {
+                title: "累计供水量",
+                key: "totalwater",
+                width: 140,
+                align: "center",
+              },
+              // {
+              //   title: "累计基础水权",
+              //   key: "yieldbase",
+              //   width: 130,
+              //   align: "center",
+              // },
+              {
+                title: "累计总超水量",
+                key: "totalover",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "累计一级超水量",
+                key: "onewater",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "累计二级超水量",
+                key: "twowater",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "累计三级超水量",
+                key: "thrwater",
+                width: 130,
+                align: "center",
+              },
+              {
+                title: "累计灌溉面积(亩)",
+                key: "area",
+                width: 130,
+                align: "center",
+              },
+            ],              
                 // 表头设置
             tablecolumns: [
               {
@@ -97,28 +155,30 @@ export default {
                 align: "center",
                 sortable: "custom",
                 fixed: "left",
-              },
+              },             
               {
-                title: "灌溉面积(亩)",
-                key: "area",
-                width: 130,
-                align: "center",
-                sortable: "custom",
-                fixed: "left",
-              },
-              {
-                title: "总供水量(m³)",
+                title: "供水量(m³)",
                 key: "totalwater",
                 width: 130,
                 align: "center",  
-                sortable: "custom",             
+                sortable: "custom", 
+                fixed: "left",            
               },
+              // {
+              //   title: "毛供水量(m³)",
+              //   key: "realbase",
+              //   width: 130,
+              //   align: "center",  
+              //   sortable: "custom", 
+              //   fixed: "left",            
+              // },
               {
                 title: "总超水量(m³)",
                 key: "totalover",
                 width: 130,
                 align: "center",  
-                sortable: true,           
+                sortable: true,  
+                fixed: "left",         
               },
               {
                 title: "一级超水量(m³)",
@@ -142,6 +202,13 @@ export default {
                 sortable: true, 
               },
               {
+                title: "灌溉面积(亩)",
+                key: "area",
+                width: 130,
+                align: "center",
+                sortable: "custom",
+              },
+              {
                 title: "所属渠道",
                 width: 120,
                 key: "canalname",
@@ -150,6 +217,7 @@ export default {
               },
             ],                
             data:[],
+            headdata:[],  
             form:{
                 searchmsg:'',
                 channel:'',
@@ -203,6 +271,7 @@ export default {
             },
             Reload(){
                 this.loading=true;
+                this.headloading=true;
                 var paramobj=new Object();
                 paramobj.year=this.form.priceyr;
                 if(this.form.searchmsg!=null && this.form.searchmsg!=''){
@@ -216,7 +285,25 @@ export default {
                 paramobj.showsign=this.form.showsign;
                 this.axios.get('/'+this.$WarmTable+'/waterprice/canalwatershow',{params:paramobj}).then(res => {
                       this.loading=false; 
-                      this.data=res.data;                                
+                      this.headloading=false;
+                      this.data=res.data; 
+                      var sumobj={totalwater:0,totalover:0,onewater:0,twowater:0,thrwater:0,area:0}; 
+                      this.data.map((val, index) => {
+                        sumobj.totalwater+=val.totalwater;
+                        sumobj.totalover+=val.totalover;
+                        sumobj.onewater+=val.onewater;
+                        sumobj.twowater+=val.twowater;
+                        sumobj.thrwater+=val.thrwater;
+                        sumobj.area+=val.area;
+                        });   
+                        sumobj.totalwater+='m³';
+                        sumobj.totalover+='m³';
+                        sumobj.onewater+='m³';
+                        sumobj.twowater+='m³';
+                        sumobj.thrwater+='m³'; 
+                        sumobj.area+='亩'; 
+                        this.headdata=[];
+                        this.headdata.push(sumobj);                        
                 });
             },
         }

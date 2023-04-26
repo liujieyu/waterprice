@@ -51,8 +51,12 @@ export default new Router({
     { path: '/water-dayanalysis',component: () => import('./table/channelwater/daywater/list.vue') },
     //月水量监测
     { path: '/water-monthanalysis',component: () => import('./table/channelwater/monthwater/list.vue') },
-    //水费收缴统计
+    //水费收缴信息
     { path: '/recharge-statis',component: () => import('./table/waterusage/list.vue') },
+    //农户用户超水信息
+    { path: '/meter-statis',component: () => import('./table/meterused/list.vue') },
+    //农户用户节水信息
+    { path: '/meter-backinfo',component: () => import('./table/meterback/list.vue') },
   ],},    
   ] 
 })
