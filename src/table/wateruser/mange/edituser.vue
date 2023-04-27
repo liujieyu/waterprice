@@ -9,7 +9,7 @@
         label-width="100px"
         style="display: flex;flex-wrap: wrap;"
       >
-<el-alert v-if="info.editsign=='add'" title="新增农户用户时系统将向水表信息表中自动插入一条该用户水表读数为0的初始记录" type="warning" :closable="false"></el-alert>
+<el-alert v-if="info.editsign=='add'" title="新增农户用户时系统将向水表读取信息表中自动插入一条该用户水表读数为0的初始记录" type="warning" :closable="false"></el-alert>
 <el-tabs value="usertab">
     <el-tab-pane label="农户用户基本信息" name="usertab">
       <el-form-item label="用户编号：" prop="farmcode">

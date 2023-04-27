@@ -16,7 +16,7 @@
                             <el-input v-model="form.pwd" type="password" placeholder=""></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-button type="primary" icon="el-icon-right" @click="RouterLink" :loading="loading" style="margin-left:60%;width:130px;">登录</el-button>
+                            <el-button type="primary" icon="el-icon-right" @click="RouterLink" :loading="loading" style="margin-left:228px;width:130px;">登录</el-button>
                         </el-form-item>
                     </el-form>
                 </div>
@@ -42,8 +42,8 @@
             return {
                 loading: false,
                 form: {
-                    sys: '4',
-                    acc: 'admin',
+                    sys: '',
+                    acc: '',
                     pwd: '',
                     remember: true,
                 },

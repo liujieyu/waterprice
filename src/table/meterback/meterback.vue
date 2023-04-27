@@ -159,7 +159,7 @@ export default {
                 align: "center",
               },
               {
-                title: "承包面积",
+                title: "累计承包面积",
                 key: "area",
                 width: 130,
                 align: "center",
