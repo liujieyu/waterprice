@@ -58,7 +58,7 @@
                     align="center"
                     width="55">
                 </el-table-column>
-                <el-table-column align="center" label="提醒" width="55" fixed="left">
+                <el-table-column align="center" label="通知" width="55" fixed="left">
                   <template slot-scope="scope">
                             <img :src="scope.row.txsign==1?require('@/assets/image/red.png'):require('@/assets/image/green.png')" style="width: 28px;height: 28px;"/>
                         </template>

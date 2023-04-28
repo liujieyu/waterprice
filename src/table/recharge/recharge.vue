@@ -7,7 +7,7 @@
                     水费充值
                 </template>
                         <div style="width:400px;float:left;display:inline;margin-top:18px;margin-bottom:14px;">
-                        <el-form label-width="100px" :model="form" size="small" :rules="rules" ref="chargeform">
+                        <el-form label-width="100px" :model="form" size="small" :rules="rules" ref="chargeform" v-loading="loading">
                             <el-form-item label="所属渠道：" prop="canalcode">
                                 <el-select v-model="form.canalcode" filterable placeholder="请选择(可搜索)" style="width:300px" @change="Queryfarm" :disabled="readsign">
                                     <el-option
@@ -80,7 +80,7 @@
                     <div style="width:730px;margin:0 auto;">
                     <Button  type="primary"  @click="goAdd()" icon="md-fastforward" style="margin-left:300px;margin-top:26px;margin-bottom:12px;" >继续充值</Button>
                     </div>
-                    <div style="width:100%;color:red;">备注：用户购买水量时，不要一次购买超两级或以上的水量；每年第一次购买水量，不要超量购买！
+                    <div style="width:100%;color:red;">备注：用户购买水量时，不要一次购买超两级或以上的水量；每年第一次购买水量，不要超量购买！抄表之前，不要连续充值！
                     </div>
                  </Card>
         </Content>
@@ -156,6 +156,7 @@ export default {
                 this.$refs['chargeform'].validate((valid) => {
                     if (valid) {  
                         this.loading=true; 
+                        this.readsign=true;
                         this.axios.post('/'+this.$WarmTable+'/waterprice/addRecharge',this.form).then((res) => {
                             this.loading=false;
                                 this.$emit("closewindows");
@@ -182,8 +183,7 @@ export default {
                             this.info.remainwater=rechargeinfo.remainwater+'m³';
                             this.info.farmname=farminfo.farmname;
                             this.info.area=farminfo.area+'亩';
-                            this.info.canalname=farminfo.canalname;
-                            this.readsign=true;
+                            this.info.canalname=farminfo.canalname;                            
                          });
                     }
                 });

@@ -198,7 +198,16 @@ export default {
 
           function zeroPointOfTheDay() {
             var date = new Date();
-            date.setMonth(0);
+            var nowMonth=date.getMonth()+1;
+            if(nowMonth<4){
+                date.setMonth(0);
+            }else if(nowMonth<7){
+                date.setMonth(3);
+            }else if(nowMonth<11){
+                date.setMonth(6);
+            }else{
+                date.setMonth(10);
+            }           
             date.setDate(1);
             return date;
           }

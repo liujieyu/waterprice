@@ -7,7 +7,7 @@
                     抄表录入
                 </template>
                         <div style="width:400px;float:left;display:inline;margin-top:18px;margin-bottom:14px;">
-                        <el-form label-width="100px" :model="form" size="small" :rules="rules" ref="meterform">
+                        <el-form label-width="100px" :model="form" size="small" :rules="rules" ref="meterform" v-loading="loading">
                             <el-form-item label="所属渠道：" prop="canalcode">
                                 <el-select v-model="form.canalcode" filterable placeholder="请选择(可搜索)" style="width:300px" @change="Queryfarm" :disabled="readsign">
                                     <el-option
@@ -160,7 +160,8 @@ export default {
             onSave(){
                 this.$refs['meterform'].validate((valid) => {
                     if (valid) {  
-                        this.loading=true; 
+                        this.loading=true;  
+                        this.readsign=true;                         
                         this.axios.post('/'+this.$WarmTable+'/waterprice/addWatermeter',this.form).then((res) => {
                             this.loading=false;
                                 this.$emit("closewindows");
@@ -188,8 +189,7 @@ export default {
                             }
                             this.info.farmname=farminfo.farmname;
                             this.info.area=farminfo.area+'亩';
-                            this.info.canalname=farminfo.canalname;
-                            this.readsign=true;
+                            this.info.canalname=farminfo.canalname;                                                   
                          });
                     }
                 });
