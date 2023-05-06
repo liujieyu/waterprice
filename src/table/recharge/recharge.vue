@@ -77,23 +77,36 @@
                                 <td class="content">{{info.remainwater}}</td>
                             </tr>                    
                     </table>
-                    <div style="width:730px;margin:0 auto;">
-                    <Button  type="primary"  @click="goAdd()" icon="md-fastforward" style="margin-left:300px;margin-top:26px;margin-bottom:12px;" >继续充值</Button>
+                    <div style="width:730px;margin:0 auto;padding-top:26px;padding-bottom:12px;">
+                    <Button  type="primary"  @click="goAdd()" icon="md-fastforward" style="margin-left:225px;":disabled="!readsign">继续充值</Button>
+                    <Button  type="primary"  @click="reCeipt()" icon="logo-bitcoin" style="margin-left:50px;" :disabled="!readsign">水费收据</Button>
                     </div>
                     <div style="width:100%;color:red;">备注：用户购买水量时，不要一次购买超两级或以上的水量；每年第一次购买水量，不要超量购买！抄表之前，不要连续充值！
                     </div>
                  </Card>
         </Content>
-    </div>
+        <el-dialog
+          :visible="detailVisible"
+          :width="dialogwidth"
+          @close="closeUDialog()"
+          append-to-body center
+        >
+        <SHOUJU v-if="detailitem.itemshow" :info="detailitem" @closewindows="detailVisible=false;"></SHOUJU>
+        </el-dialog>
+    </div>   
 </template>
 <script type="text/javascript">
 import FilterMethods from "@/assets/commonJS/FilterMethods.js";
+import SHOUJU from "@/table/recharge/shouju.vue";
 export default {
         data(){
             return{
                 lastlabel:'上期结余水量',
                 loading:false,
                 readsign:false,
+                detailVisible:false,//是否显示弹框
+                detailitem:{itemshow:false},//弹框对象
+                dialogwidth:(770/window.innerWidth*100)+"%",
                 form:{
                     canalcode:'',
                     farmcode:'',
@@ -125,7 +138,7 @@ export default {
         },
         mixins: [FilterMethods],
         components: {
-          
+          SHOUJU
         },
         mounted(){
             this.form.syssign=this.Cook.get("usertype");
@@ -134,7 +147,7 @@ export default {
             });
             this.$FilterData.Get_CanalInfo(this.$WarmTable,this.form.syssign,data => {
                         this.channelist = data;
-            });
+            });                          
         },
         methods:{
             keyUp(e, key) {
@@ -194,6 +207,16 @@ export default {
                 this.form.amount='';
                 this.readsign=false;
                 this.lastlabel="上期结余水量";
+            },
+            reCeipt(){               
+                this.detailitem=this.info;
+                this.detailitem.lastlabel=this.lastlabel;
+                this.detailitem.itemshow=true;
+                this.detailVisible=true;
+            },
+            closeUDialog(){
+                this.detailVisible=false;
+                this.detailitem.itemshow=false;
             },
         }
 }
