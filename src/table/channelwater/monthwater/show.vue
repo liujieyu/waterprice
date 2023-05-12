@@ -433,7 +433,30 @@ export default {
                     text: echartData.chartName
                   },
                   tooltip: {
-                    trigger: "axis"
+                    trigger: "axis",
+                    formatter: function (params) {
+                      for (let i = 0; i < params.length; i++) {
+                        var relVal = params[i].name+"月";
+                      }
+                      for (let i = 0; i < params.length; i++) {
+                          let unit = "";
+                          if (params[i].seriesName == "流量") {
+                              unit = "m³/s";
+                          }else if(params[i].seriesName == "水量"){
+                              unit = "m³";
+                          }else{
+                              unit = "m";
+                          }
+                          relVal +=
+                          "<br/>" +
+                          params[i].marker +
+                          params[i].seriesName +
+                          "：" +
+                          params[i].data +
+                          unit;
+                      }
+                      return relVal;
+                    },
                   },
                   legend: {
                     data: [echartData.y1.name, echartData.y3.name,echartData.y2.name],

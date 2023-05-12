@@ -81,9 +81,9 @@
                             </tr>                    
                     </table>
                     <div style="width:730px;margin:0 auto;">
-                    <Button  type="primary"  @click="goAdd()" icon="md-fastforward" style="margin-left:300px;margin-top:26px;margin-bottom:12px;" >继续抄表</Button>
+                    <Button  type="primary"  @click="goAdd()" icon="md-fastforward" style="margin-left:300px;margin-top:26px;margin-bottom:12px;" :disabled="!readsign">继续抄表</Button>
                     </div>
-                    <div style="width:100%;color:red;">备注：每隔3个月进行一次抄表，1月、4月、7月、11月进行；将用户的水表读数录入系统；每年1月为年终抄表，水量归为前一年。
+                    <div style="width:100%;color:red;">备注：每隔3个月进行一次抄表，1月、4月、7月、10月进行；将用户的水表读数录入系统；每年1月为年终抄表，水量归为前一年。
                      督促用户在下一次抄表之前，将本次欠缴水费补齐。
                     </div>
                  </Card>

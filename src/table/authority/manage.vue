@@ -262,7 +262,7 @@ export default {
               this.editinfo.saveinfo="修改登录账号成功!";
             },
             resetClick(item){
-              this.editinfo.title="重置账号"+item.loginname+"的密码";
+              this.editinfo.title="重置"+item.loginname+"的密码";
               this.editinfo.editsign='reset';
               this.editinfo.label="新密码：";
               this.editform.syssign=this.form.showsign;

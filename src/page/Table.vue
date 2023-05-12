@@ -69,8 +69,8 @@
                       信息维护
                   </template>
                   <MenuItem name="6-1" to="/stepprice-manage"><Icon type="ios-paper-outline" />执行水价标准维护</MenuItem>
-                  <MenuItem name="6-2" to="/canaluser-manage"><Icon type="ios-paper-outline" />支渠用户信息维护</MenuItem>
-                  <MenuItem name="6-3" to="/userinfo-manage"><Icon type="ios-paper-outline" />农户用户信息维护</MenuItem>
+                  <MenuItem name="6-2" to="/userinfo-manage"><Icon type="ios-paper-outline" />农户用户信息维护</MenuItem>
+                  <MenuItem name="6-3" to="/canaluser-manage"><Icon type="ios-paper-outline" />支渠用户信息维护</MenuItem>                 
                   <MenuItem name="6-4" to="/loginuser-manage"><Icon type="ios-paper-outline" />权限管理</MenuItem>
               </Submenu>                 
           </Menu>

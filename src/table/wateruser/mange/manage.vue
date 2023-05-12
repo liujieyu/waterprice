@@ -133,7 +133,7 @@ export default {
               {
                 title: "所属渠道",
                 key: "canalcode",
-                width: 120,
+                width: 130,
                 align: "center",
                 sortable: "custom",
               },
@@ -275,10 +275,13 @@ export default {
                 });
               }else{
                 var farmids="";
+                var farmcodes="";
                 for(var i=0;i<this.multipleSelection.length;i++){
                   farmids+=this.multipleSelection[i].id;
+                  farmcodes+=this.multipleSelection[i].farmcode;
                   if(i<this.multipleSelection.length-1){
                     farmids+=",";
+                    farmcodes+=",";
                   }
                 }
                 this.$confirm('确定删除这'+this.multipleSelection.length+'条农户用户信息?', '提示', {
@@ -286,16 +289,33 @@ export default {
                   cancelButtonText: '取消',
                   type: 'warning'
                 }).then(() => {
-                  this.axios.get('/'+this.$WarmTable+'/waterprice/delfarmuser',{params:{ids:farmids}}).then((res)=>{
-                    this.$message({
-                      type: 'success',
-                      message: '删除成功!'
-                    });
-                    this.Reload();
-                  });                 
+                  this.axios.get('/'+this.$WarmTable+'/waterprice/existfarmcodes',{params:{farmcodes:farmcodes}}).then((res)=>{
+                      var data=res.data;
+                      if(data.sign>0){
+                          this.$confirm(data.warm, '提示', {
+                            confirmButtonText: '确定',
+                            cancelButtonText: '取消',
+                            type: 'warning'
+                          }).then(() => {
+                            this.deleteFarmuser(farmids,farmcodes,data.sign);
+                          }).catch(() => {         
+                          });
+                      }else{
+                          this.deleteFarmuser(farmids,farmcodes,data.sign);
+                      }
+                  });                                  
                 }).catch(() => {         
                 });
               }
+            },
+            deleteFarmuser(farmids,farmcodes,czsign){
+              this.axios.get('/'+this.$WarmTable+'/waterprice/delfarmuser',{params:{ids:farmids,farmcodes:farmcodes,czsign:czsign}}).then((res)=>{
+                            this.$message({
+                              type: 'success',
+                              message: '删除成功!'
+                            });
+                            this.Reload();
+                          });
             },
             addClick(){
               this.userdetail="新增农户用户信息";

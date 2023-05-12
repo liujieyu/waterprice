@@ -29,7 +29,7 @@
         <el-input v-model="form.area" placeholder="请输入" style="width:148px" oninput="value=value.replace(/[^\d]/g,'')"></el-input>亩
       </el-form-item>
       <el-form-item label="排序：" prop="px" >
-        <el-input v-model="form.px" placeholder="请输入" style="width:160px" oninput="value=value.replace(/[^\d]/g,'')"></el-input>
+        <el-input-number v-model="form.px" placeholder="请输入" style="width:160px" :min="0" :max="1000"  onKeypress="return (/[\d]/.test(String.fromCharCode(event.keyCode)))"></el-input-number>
       </el-form-item>
 <el-form-item>
     <el-button type="primary" @click="onSubmit" style="margin-right:20px;margin-left:210px;" size="small">保存</el-button>
