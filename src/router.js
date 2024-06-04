@@ -8,6 +8,7 @@ export default new Router({
   routes: [
     {path: '/loginyuejin', component: () => import('./views/LoginYuejin.vue')},
     {path: '/loginwuxi', component: () => import('./views/LoginWuxi.vue')},
+    {path: '/loginsunjiachong', component: () => import('./views/LoginSunjiachong.vue')},
     {path: '/home', component: () => import('./Home.vue'),children:[
     //执行水价标准维护
     { path: '/stepprice-manage',component: () => import('./table/stepprice/manage/list.vue') },

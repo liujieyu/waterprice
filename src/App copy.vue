@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     close(){
-      window.location.href = 'http://218.75.144.44:7001/static/main/#/';
+      window.location.href = 'http://42.49.129.17:7001/static/main/#/';
     },
   },
   computed: {},

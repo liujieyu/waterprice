@@ -7,11 +7,11 @@ module.exports = {
         // proxy: 'http://222.240.238.58:7001/',
         proxy: {
             '/table_war_exploded':{
-              target: 'http://localhost:8080/',
+              target: 'http://localhost:8088/',
               changeOrigin: true
           },
             '':{
-              target: 'http://222.240.238.58:7001/',//http://117.191.63.186:7001(康苏) http://222.240.238.58:7001/(黄材) http://218.75.144.44:7001/(汪水)
+              target: 'http://42.49.129.17:7001/',//http://117.191.63.186:7001(康苏) http://222.240.238.58:7001/(黄材) http://42.49.129.17:7001/(汪水)
               changeOrigin: true
             }
         }

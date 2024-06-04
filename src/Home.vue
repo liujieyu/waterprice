@@ -125,7 +125,6 @@ export default {
   },
   methods: {
     close(){
-      debugger;
       var loginurl=this.Cook.get("loginurl");
       this.Cook.set("username",null);
       this.Cook.set("channelcode",null);
